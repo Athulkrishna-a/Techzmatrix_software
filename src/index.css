@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Geom:ital,wght@0,300..900;1,300..900&family=Gravitas+One&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rammetto+One&family=Sekuya&display=swap');
+@import "tailwindcss";
+
+
+
+@theme {
+  --color-main: #0c203b;
+  --color-red: #b02720;
+  --color-blue: #5f99c4;
+  --color-white: #ffffff;
+
+
+  --font-acme: "Acme", sans-serif;
+  --font-bricolage: "Bricolage Grotesque", sans-serif;
+  --font-geom: "Geom", sans-serif;
+  --font-gravitas: "Gravitas One", cursive;
+  --font-playfair: "Playfair Display", serif;
+  --font-rammetto: "Rammetto One", cursive;
+  --font-sekuya: "Sekuya", sans-serif;
+}
