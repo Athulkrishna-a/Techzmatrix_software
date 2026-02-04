@@ -24,19 +24,17 @@ const fadeUp = {
 const Footer = () => {
   return (
     <footer className="bg-[#0B1E3A] relative overflow-hidden text-white inset-shadow-sm inset-shadow-cyan-500/30 ">
-      <div
-    className="absolute inset-0 z-0"
-    style={{
-      
-      backgroundImage: `
-        radial-gradient(circle, rgba(139,92,246,0.6) 1px, transparent 1px),
-        radial-gradient(circle, rgba(59,130,246,0.4) 1px, transparent 1px),
-        radial-gradient(circle, rgba(236,72,153,0.5) 1px, transparent 1px)
-      `,
-      backgroundSize: "20px 20px, 40px 40px, 60px 60px",
-    
-    }}
-  />
+     <div
+  className="absolute inset-0 z-0 pointer-events-none"
+  style={{
+    backgroundImage: `
+      radial-gradient(circle, rgba(139,92,246,0.6) 1px, transparent 1px),
+      radial-gradient(circle, rgba(59,130,246,0.4) 1px, transparent 1px),
+      radial-gradient(circle, rgba(236,72,153,0.5) 1px, transparent 1px)
+    `,
+    backgroundSize: "20px 20px, 40px 40px, 60px 60px",
+  }}
+/>
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -50,7 +48,7 @@ const Footer = () => {
           sm:grid-cols-2
           lg:grid-cols-4
           gap-10
-          
+                  z-10
         "
       >
 
