@@ -42,8 +42,30 @@ const capabilities = [
 
 const WhyChooseUs = () => {
     return (
-        <section
-            className="w-full h-auto">
+        <section className="relative py-20 px-6">
+            <div
+                className="absolute inset-0 z-0"
+                style={{
+                    backgroundImage: `
+         linear-gradient(
+    to right,
+    rgba(355, 255, 255, 0.035) 1px,
+    transparent 1px
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.055) 1px,
+    transparent 1px
+  ),
+  radial-gradient(
+    circle 800px at 0% 200px,
+    rgba(95, 153, 196, 0.35),
+    transparent 0%
+  )
+      `,
+                    backgroundSize: "96px 64px, 96px 64px, 100% 100%",
+                }}
+            />
 
             <motion.div
                 variants={stagger}
@@ -73,7 +95,7 @@ const WhyChooseUs = () => {
                     variants={fadeUp}
                     className="flex md:flex-row flex-col pt-10 ">
                     <motion.div
-                        className="basis-1/2 rounded-2xl mt-5 text-white glow-edge  shadow-2xl shadow-black border border-white/10 bg-white/5 p-4">
+                        className="basis-1/2 rounded-2xl mt-5 tm-glass tm-noise text-white/70 glow-edge  shadow-2xl shadow-black border border-white/10 bg-white/5 p-4">
                         <h1
                             className="p-4 ">
                             Build outcomes, not uncertainty.
@@ -81,34 +103,36 @@ const WhyChooseUs = () => {
                         <div className=" flex items-center gap-3 ">
                             <div className="rounded-2xl w-1/2  text-white glow-edge  border border-white/10 bg-white/5 p-4">
                                 <h2>years in delivery</h2>
-                                <h1>9+</h1>
+                                <h1 className="text-3xl py-2 text-blue-400">10+</h1>
                             </div >
                             <div className="rounded-2xl w-1/2 text-white glow-edge  border border-white/10 bg-white/5 p-4">
-                                <h2>products shipped</h2>
-                                <h1>48+</h1>
+                                <h2>Clients served</h2>
+                                <h1 className="text-3xl py-2 text-blue-400">24+</h1>
 
                             </div>
                         </div>
                         <div className="rounded-2xl mt-3 text-white glow-edge  border border-white/10 bg-white/5 p-4">
                             <h3>uptime target</h3>
-                            <h1>99.99%</h1>
-                            <h2>measured at edge + core services</h2>
+                            <h1 className="text-3xl py-2 text-blue-400">99.99%</h1>
+                            <h2 className="text-white/70">measured at edge + core services</h2>
                         </div>
-                        <h1 
-                        className="p-4 ">Build outcomes, not uncertainty.</h1>
+                        <h1
+                            className="p-4 ">We design and ship systems that perform under real conditions, not ideal ones.
+                            Every release is measured by reliability, uptime, and outcomes after launch—not assumptions before it.</h1>
                     </motion.div>
                     <motion.div
                         variants={fadeUp}
-                        className="grid grid-cols-2 gap-2 basis-1/2  p-6">
+                        className="grid  grid-cols-2 gap-3 basis-1/2 pt-6 md:p-6">
                         {
                             capabilities.map((item) => (
                                 <motion.div key={item.id}
                                     whileHover={{ y: -4 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                    className="rounded-2xl text-white glow-edge  border border-white/10 bg-white/5 p-6">
-                                    <item.icon />
-                                    <h1>{item.title}</h1>
-                                    <h2 className="text-white/30">{item.subtitle}</h2>
+                                    className="rounded-2xl text-white tm-glass tm-noise  shadow-2xs shadow-blue-300  border border-white/10 bg-white/5 p-6">
+
+                                    <item.icon size={30} className="my-3" />
+                                    <h1 className="text-blue-400">{item.title}</h1>
+                                    <h2 className="text-white/70">{item.subtitle}</h2>
                                 </motion.div>
                             ))
                         }

@@ -187,7 +187,7 @@ const Header = () => {
                         >
                           <Link
                             to={path}
-                            className="block px-4 py-2 hover:text-main"
+                            className="block px-4 py-2 hover:text-red-500"
                           >
                             {label}
                           </Link>
@@ -235,7 +235,7 @@ const Header = () => {
                         >
                           <Link
                             to={path}
-                            className="block px-4 py-2 hover:text-main"
+                            className="block px-4 py-2 hover:text-red-500"
                           >
                             {label}
                           </Link>
@@ -253,7 +253,11 @@ const Header = () => {
               initial="rest"
               whileHover="hover"
             >
-              <NavLink to="/contact" className="px-3 py-2 rounded-xl">
+              <NavLink to="/contact" 
+            className={({ isActive }) =>
+                  `px-3 py-2 rounded-xl inline-block ${isActive ? activeClass : ""
+                  }`
+                }>
                 Contact
               </NavLink>
             </motion.li>
@@ -264,7 +268,7 @@ const Header = () => {
               onMouseEnter={() => setDesktopMenu("user")}
               onMouseLeave={() => setDesktopMenu(null)}
             >
-              {/* User Icon */}
+             
               <motion.span
                 variants={navItem}
                 initial="rest"
@@ -288,7 +292,7 @@ const Header = () => {
                       <motion.li variants={dropdownItem}>
                         <Link
                           to="/login/EmployeeLogin"
-                          className="block px-4 py-2 hover:text-main"
+                          className="block px-4 py-2 hover:text-red-500"
                         >
                           Employee Login
                         </Link>

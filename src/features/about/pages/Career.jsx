@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { motion } from "framer-motion";
+import CTA from "../../contact/components/CTA"
 
 const Career = () => {
   return (
@@ -43,6 +44,7 @@ const Career = () => {
          Join a team that values craft and momentum. We build high-trust products across web, mobile, UI/UX, and cloud
         </p>
       </motion.div>
+      <CTA/>
     </section>
   );
 };

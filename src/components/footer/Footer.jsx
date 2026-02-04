@@ -1,12 +1,18 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import Techzmatrix from "../../assets/images/Techzmatrix_software.png"
+import { PiWhatsappLogoDuotone } from "react-icons/pi";
+
 import {
   Mail,
   Phone,
   MapPin,
   Linkedin,
   Twitter,
-  Github
+  Github,
+  Instagram,
+  InstagramIcon,
+
 } from "lucide-react";
 
 /* Motion */
@@ -17,8 +23,20 @@ const fadeUp = {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B1E3A] text-white">
-      {/* Main Content */}
+    <footer className="bg-[#0B1E3A] relative overflow-hidden text-white inset-shadow-sm inset-shadow-cyan-500/30 ">
+      <div
+    className="absolute inset-0 z-0"
+    style={{
+      
+      backgroundImage: `
+        radial-gradient(circle, rgba(139,92,246,0.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(59,130,246,0.4) 1px, transparent 1px),
+        radial-gradient(circle, rgba(236,72,153,0.5) 1px, transparent 1px)
+      `,
+      backgroundSize: "20px 20px, 40px 40px, 60px 60px",
+    
+    }}
+  />
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -32,18 +50,21 @@ const Footer = () => {
           sm:grid-cols-2
           lg:grid-cols-4
           gap-10
+          
         "
       >
-        {/* Company */}
+
         <motion.div variants={fadeUp}>
-          <h3 className="text-lg font-semibold mb-3">Techzmatrix</h3>
+          <Link to="/" className="shrink-0">
+            <img src={Techzmatrix} className="w-46 object-contain pb-3" />
+          </Link>
           <p className="text-sm text-white/70 leading-relaxed">
             Techzmatrix delivers scalable, secure, and future-ready
             software solutions tailored for modern businesses.
           </p>
         </motion.div>
 
-        {/* Quick Links */}
+
         <motion.div variants={fadeUp}>
           <h4 className="text-base font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2 text-sm text-white/70">
@@ -54,7 +75,7 @@ const Footer = () => {
           </ul>
         </motion.div>
 
-        {/* Services */}
+
         <motion.div variants={fadeUp}>
           <h4 className="text-base font-semibold mb-3">Services</h4>
           <ul className="space-y-2 text-sm text-white/70">
@@ -65,28 +86,46 @@ const Footer = () => {
           </ul>
         </motion.div>
 
-        {/* Contact */}
+
         <motion.div variants={fadeUp}>
           <h4 className="text-base font-semibold mb-3">Contact</h4>
           <ul className="space-y-3 text-sm text-white/70">
-            <li className="flex items-center gap-2">
-              <Mail size={16} /> info@techzmatrix.com
+            <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
+              <Mail size={16} /><a
+                href="mailto:mail@techzmatrix.in"
+
+              >
+                mail@techzmatrix.in
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Phone size={16} /> +91 98765 43210
+            <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
+              <Phone size={16} /> <a href="tel:+919633764228">+91 96337 64228</a>
+
             </li>
-            <li className="flex items-start gap-2">
-              <MapPin size={16} />
-              <span>
-                Thiruvananthapuram, Kerala<br />
-                India
-              </span>
+            <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
+              <Phone size={16} /> <a href="tel:9995602526">+91 99956 02526</a>
+            </li>
+            <li className="flex items-start gap-2  cursor-pointer hover:text-cyan-400/80">
+              <MapPin size={26} />
+              <a
+                href="https://maps.app.goo.gl/wp6qNBH4zR5dsxNx5"
+                target="_blank"
+                rel="noopener noreferrer"
+
+              >
+                Technopark Road,<br />
+                Kazhakkoottam,<br />
+                Thiruvananthapuram, Kerala 695583
+              </a>
+            </li>
+            <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
+              <PiWhatsappLogoDuotone size={26} /><a href="https://wa.me/9995602526">+91 99956 02526</a>
             </li>
           </ul>
         </motion.div>
       </motion.div>
 
-      {/* Bottom Bar */}
+
       <div className="border-t border-white/10">
         <div
           className="
@@ -101,7 +140,7 @@ const Footer = () => {
           "
         >
           <p className="text-xs sm:text-sm text-white/60 text-center sm:text-left">
-            © {new Date().getFullYear()} Techzmatrix. All rights reserved.
+            © {new Date().getFullYear()} Techzmatrix Software Technologies. All rights reserved.
           </p>
 
           <div className="flex items-center gap-5 text-white/70">
@@ -113,6 +152,9 @@ const Footer = () => {
             </a>
             <a href="#" aria-label="Github" className="hover:text-white">
               <Github size={18} />
+            </a>
+            <a href="#" aria-label="LinkedIn" className="hover:text-white">
+              <InstagramIcon size={18} />
             </a>
           </div>
         </div>

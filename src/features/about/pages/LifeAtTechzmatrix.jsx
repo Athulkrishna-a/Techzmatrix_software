@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import CTA from "../../contact/components/CTA"
 
 const LifeAtTechzmatrix = () => {
   return (
@@ -41,6 +42,7 @@ const LifeAtTechzmatrix = () => {
           We’re a high-ownership team that values craft, learning, and momentum. The goal: ship meaningful software and keep raising the bar.
         </p>
       </motion.div>
+      <CTA/>
     </section>
   );
 };

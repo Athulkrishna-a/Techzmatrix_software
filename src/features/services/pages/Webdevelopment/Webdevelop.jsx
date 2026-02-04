@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import CTA from "../../../contact/components/CTA"
 
 const Webdevelop = () => {
   return (
@@ -44,6 +45,7 @@ const Webdevelop = () => {
           software with premium UX—without the uncertainty.
         </p>
       </motion.div>
+      <CTA/>
     </section>
   );
 };

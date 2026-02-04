@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import CTA from "../../../contact/components/CTA"
 
 const AppDevelop = () => {
   return (
     <section className="relative overflow-hidden py-24 px-6 text-white">
-      {/* Base gradient */}
+     
       <div
         className="absolute inset-0"
         style={{
@@ -18,10 +19,10 @@ const AppDevelop = () => {
         }}
       />
 
-      {/* Soft vignette */}
+     
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04),transparent_60%)]" />
 
-      {/* Content */}
+      
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,6 +44,7 @@ const AppDevelop = () => {
           is engineered to scale cleanly from MVP to production.
         </p>
       </motion.div>
+      <CTA/>
     </section>
   );
 };

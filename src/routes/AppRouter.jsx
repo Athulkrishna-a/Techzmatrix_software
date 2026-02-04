@@ -10,50 +10,64 @@ import Webdevelop from "../features/services/pages/Webdevelopment/Webdevelop.jsx
 import AppDevelop from "../features/services/pages/appdevelopement/AppDevelop.jsx";
 import Clouddevelop from "../features/services/pages/clouddevelopment/Clouddevelop.jsx";
 import EmployeeLogin from "../features/auth/EmployeeLogin.jsx";
+import AuthLayout from "../layouts/AuthLayout.jsx";
+import EmployeeSignup from "../features/auth/EmployeeSignup.jsx"
 
-export const AppRouter= createBrowserRouter([
+export const AppRouter = createBrowserRouter([
     {
-         path: "/",
-        element: <MainLayout/>,
-        errorElement: <NotFound/>,
-        children:[
+        path: "/",
+        element: <MainLayout />,
+        errorElement: <NotFound />,
+        children: [
             {
                 index: true,
-                element: <Home/>
+                element: <Home />
             },
             {
-                path:"/contact",
-                element:<ContactUs/>
+                path: "/contact",
+                element: <ContactUs />
             },
             {
-                path:"/about",
-                element:<Aboutus/>
+                path: "/about",
+                element: <Aboutus />
             },
             {
-                path:"/careers",
-                element:<Career/>
+                path: "/careers",
+                element: <Career />
             }
-            ,{
-                path:"/LifeAtTechzmatrix",
-                element:<LifeAtTechzmatrix/>
+            , {
+                path: "/LifeAtTechzmatrix",
+                element: <LifeAtTechzmatrix />
             },
             {
-                path:"/services/Webdevelopment",
-                element:<Webdevelop/>
-            },
-             {
-                path:"/services/Appdevelopment",
-                element:<AppDevelop/>
+                path: "/services/Webdevelopment",
+                element: <Webdevelop />
             },
             {
-                path:"/services/CloudDevelopment",
-                element:<Clouddevelop/>
+                path: "/services/Appdevelopment",
+                element: <AppDevelop />
             },
             {
-                path:"/login/EmployeeLogin",
-                element:<EmployeeLogin/>
-            }
+                path: "/services/CloudDevelopment",
+                element: <Clouddevelop />
+            },
             
         ]
+    },
+    {
+        path: "/login",
+        element: <AuthLayout />,
+        errorElement: <NotFound />,
+        children: [
+            {
+                path: "EmployeeLogin",
+                element: <EmployeeLogin />
+            },
+            {
+                path: "EmployeeSignup",
+                element: <EmployeeSignup />
+            }
+        ],
     }
-])
+
+]);

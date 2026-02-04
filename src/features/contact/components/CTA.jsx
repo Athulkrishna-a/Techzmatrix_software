@@ -1,12 +1,36 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from 'react-router-dom'
 
 import React from 'react'
 
 const CTA = () => {
     return (
-        <section className="relative py-28 px-6 bg-[#081a2f] overflow-hidden">
-            {/* Outer glass container */}
+        <section className="relative py-25 px-6 overflow-hidden">
+
+            <div
+                className="absolute inset-0 z-0"
+                style={{
+                    backgroundImage: `
+         linear-gradient(
+    to right,
+    rgba(355, 255, 255, 0.035) 1px,
+    transparent 1px
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.055) 1px,
+    transparent 1px
+  ),
+  radial-gradient(
+    circle 800px at 0% 200px,
+    rgba(95, 153, 196, 0.35),
+    transparent 0%
+  )
+      `,
+                    backgroundSize: "96px 64px, 96px 64px, 100% 100%",
+                }}
+            />
             <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -26,9 +50,10 @@ const CTA = () => {
           items-start lg:items-center
           justify-between
           gap-10
+          glow-red
         "
             >
-                {/* Left content */}
+
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -36,23 +61,23 @@ const CTA = () => {
                     transition={{ delay: 0.15, duration: 0.6 }}
                     className="max-w-2xl"
                 >
-                    <p className="text-sm uppercase tracking-widest text-white/60">
+                    <p className="text-sm uppercase tracking-widest  text-blue-400">
                         Next step
                     </p>
 
-                    <h2 className="mt-4 text-2xl md:text-4xl font-semibold text-white leading-tight">
+                    <h2 className="mt-4 text-2xl md:text-4xl  text-white leading-tight font-semibold">
                         Let’s Build Something Powerful
                         <br />
                         Together
                     </h2>
 
-                    <p className="mt-6 text-lg text-white/70">
+                    <p className="mt-6 text-base text-white/70 ">
                         Tell us what you’re building. We’ll map the fastest path to a
                         secure, scalable release.
                     </p>
                 </motion.div>
 
-                
+
                 <motion.div
                     initial={{ opacity: 0, x: 40 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -60,7 +85,7 @@ const CTA = () => {
                     transition={{ delay: 0.25, duration: 0.6 }}
                     className="flex flex-col sm:flex-row gap-4"
                 >
-                  
+
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.96 }}
@@ -69,21 +94,26 @@ const CTA = () => {
               rounded-2xl
               bg-linear-to-r from-red-500 to-red-600
               px-4 py-4
-              text-white font-medium
-              shadow-lg shadow-red-500/30
+              text-white 
+              shadow-lg shadow-red-500/30 font-Cabin
+
+
             "
                     >
-                        Start Your Project
+
+                        <Link to="/contact">Start Your Project</Link>
                         <ArrowRight size={18} />
+
                     </motion.button>
 
-                   
+
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.96 }}
                         className="
               inline-flex items-center justify-center
                rounded-2xl
+               font-Cabin
               border border-blue-400/40
               px-4 py-4
               text-white/90

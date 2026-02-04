@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import CTA from "../../../contact/components/CTA"
 
 const Clouddevelop = () => {
   return (
@@ -26,6 +27,7 @@ const Clouddevelop = () => {
           production workloads.
         </p>
       </motion.div>
+      <CTA/>
     </section>
   );
 };
