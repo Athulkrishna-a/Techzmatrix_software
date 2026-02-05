@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { jobs } from "../career/data/Jobs";
 import HiringProcess from "../career/components/HiringProcess";
 import CTA from "../../contact/components/CTA";
-import JobCard from "./components/Jobcard";
+import JobCard from "../career/components/JobCard"
 
 const containerVariants = {
     hidden: { opacity: 0 },
