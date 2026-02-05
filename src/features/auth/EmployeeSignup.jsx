@@ -31,50 +31,27 @@ const EmployeeLogin = () => {
     return (
         <section className="relative w-full min-h-screen overflow-hidden">
 
-            {/* <div
-                className="absolute inset-0"
+            <div
+                className="absolute inset-0 z-0"
                 style={{
                     backgroundImage: `
-            linear-gradient(135deg,
-              #0b1d33 0%,
-              #0e2a4d 35%,
-              #1a1f3b 65%,
-              #120d26 100%
-            )
-          `,
+           linear-gradient(
+               to right,
+               rgba(355, 255, 255, 0.035) 1px,
+                transparent 1px),
+          linear-gradient( to bottom,   rgba(255, 255, 255, 0.055) 1px,  transparent 1px),
+  radial-gradient(circle 800px at 0% 200px,rgba(95, 153, 196, 0.35),transparent 0%)
+      `,
+                    backgroundSize: "96px 64px, 96px 64px, 100% 100%",
                 }}
-            /> */}
-    <div
-  aria-hidden
-  className="absolute inset-0 z-0 pointer-events-none"
-  style={{
-    backgroundImage: `
-      linear-gradient(135deg,
-        #0b1d33 0%,
-        #0e2a4d 35%,
-        #1a1f3b 65%,
-        #120d26 100%
-      ),
-      linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px),
-      radial-gradient(circle 600px at 15% 35%, rgba(213,197,255,0.35), transparent 70%)
-    `,
-    backgroundSize: `
-      100% 100%,
-      120px 120px,
-      120px 120px,
-      100% 100%
-    `,
-    backgroundRepeat: "no-repeat, repeat, repeat, no-repeat",
-  }}
-/>
+            />
 
 
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]" />
+           
 
 
             <motion.div
-                className="relative z-10 max-w-6xl mx-auto px-6 py-10"
+                className="relative z-10 max-w-6xl  mx-auto px-6 py-10"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
@@ -97,7 +74,7 @@ const EmployeeLogin = () => {
                     </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
+                <div className="grid grid-cols-1  tm-glass tm-noise md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
 
                     <div className="w-full h-auto relative overflow-hidden rounded-xl">
                         <AnimatePresence mode="wait">

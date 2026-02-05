@@ -90,20 +90,18 @@ const CTA = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.96 }}
                         className="
-              inline-flex items-center gap-3
-              rounded-2xl
-              bg-linear-to-r from-red-500 to-red-600
+              inline-flex items-center justify-center
+               rounded-2xl
+               font-Cabin
+              border border-blue-400/40
+              bg-white/20
               px-4 py-4
-              text-white 
-              shadow-lg shadow-red-500/30 font-Cabin
-
-
+              text-white
+              hover:bg-white/5
             "
                     >
-
                         <Link to="/contact">Start Your Project</Link>
                         <ArrowRight size={18} />
-
                     </motion.button>
 
 
@@ -121,6 +119,7 @@ const CTA = () => {
             "
                     >
                         Explore Services
+
                     </motion.button>
                 </motion.div>
             </motion.div>

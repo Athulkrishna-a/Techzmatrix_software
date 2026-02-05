@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import google1 from "../../assets/images/google1.jpeg"
 import google2 from "../../assets/images/google2.jpeg"
 import google3 from "../../assets/images/google3.jpeg"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const EmployeeLogin = () => {
 
 
@@ -25,30 +25,30 @@ const EmployeeLogin = () => {
     return () => clearInterval(interval);
   }, []);
 
- useEffect(() => {
+  useEffect(() => {
     document.title = 'Employee Login | Techzmatrix Software Technologies'
   }, [])
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
 
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(135deg,
-              #0b1d33 0%,
-              #0e2a4d 35%,
-              #1a1f3b 65%,
-              #120d26 100%
-            )
-          `,
+           linear-gradient(
+               to right,
+               rgba(355, 255, 255, 0.035) 1px,
+                transparent 1px),
+          linear-gradient( to bottom,   rgba(255, 255, 255, 0.055) 1px,  transparent 1px),
+  radial-gradient(circle 800px at 0% 200px,rgba(95, 153, 196, 0.35),transparent 0%)
+      `,
+          backgroundSize: "96px 64px, 96px 64px, 100% 100%",
         }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_60%)]" />
 
 
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-6 py-10"
+        className="relative z-10 max-w-6xl  mx-auto px-6 py-10"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -65,13 +65,13 @@ const EmployeeLogin = () => {
           </div>
 
           <button className="px-5 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition">
-          <Link to='/'>
-          Go Home
-          </Link>
+            <Link to='/'>
+              Go Home
+            </Link>
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2  tm-glass tm-noise gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
 
           <div className="w-full h-auto relative overflow-hidden rounded-xl">
             <AnimatePresence mode="wait">
@@ -124,7 +124,7 @@ const EmployeeLogin = () => {
               Don’t have an account?{" "}
               <span className="text-blue-400 cursor-pointer hover:underline">
                 <Link to='/Login/EmployeeSignup'>
-                signup
+                  signup
                 </Link>
               </span>
             </p>

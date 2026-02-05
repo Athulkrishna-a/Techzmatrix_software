@@ -4,11 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, User } from "lucide-react";
 import Techzmatrix from "../../assets/images/Techzmatrix_software.png";
 
-/* =====================
-   Animation Variants
-===================== */
 
-/* Top-level nav hover */
 const navItem = {
   rest: { scale: 1 },
   hover: {
@@ -17,7 +13,7 @@ const navItem = {
   },
 };
 
-/* Underline grow animation */
+
 const underline = {
   rest: { scaleX: 0, opacity: 0 },
   hover: {
@@ -27,7 +23,7 @@ const underline = {
   },
 };
 
-/* Desktop dropdown */
+
 const desktopDropdown = {
   hidden: {
     opacity: 0,
@@ -48,7 +44,7 @@ const desktopDropdown = {
   },
 };
 
-/* Desktop submenu item */
+
 const dropdownItem = {
   hidden: { opacity: 0, x: -6 },
   visible: { opacity: 1, x: 0 },
@@ -175,11 +171,12 @@ const Header = () => {
                     exit="hidden"
                     className="absolute left-0 top-full pt-4"
                   >
-                    <motion.ul className="bg-blue/50 backdrop-blur-md border border-blue/50 rounded-2xl min-w-56 py-2">
+                    <motion.ul className="bg-cyan-400/70 backdrop-blur-md border border-blue/50 rounded-2xl min-w-56 py-2">
                       {[
                         ["About Us", "/about"],
                         ["Life@Techzmatrix", "/LifeAtTechzmatrix"],
                         ["Careers", "/careers"],
+                        ["Software Training ", "/careers"],
                       ].map(([label, path]) => (
                         <motion.li
                           key={path}
@@ -187,7 +184,7 @@ const Header = () => {
                         >
                           <Link
                             to={path}
-                            className="block px-4 py-2 hover:text-red-500"
+                            className="block px-4 py-2 hover:text-white/70"
                           >
                             {label}
                           </Link>
@@ -223,7 +220,7 @@ const Header = () => {
                     exit="hidden"
                     className="absolute left-0 top-full pt-4"
                   >
-                    <motion.ul className="bg-blue/50 backdrop-blur-md border border-blue/50 rounded-2xl min-w-56 py-2">
+                    <motion.ul className="bg-cyan-400/70 backdrop-blur-md border border-blue/50 rounded-2xl min-w-56 py-2">
                       {[
                         ["Web Development", "/services/Webdevelopment"],
                         ["Mobile Apps", "/services/Appdevelopment"],
@@ -235,7 +232,7 @@ const Header = () => {
                         >
                           <Link
                             to={path}
-                            className="block px-4 py-2 hover:text-red-500"
+                            className="block px-4 py-2  hover:text-white/70"
                           >
                             {label}
                           </Link>
@@ -288,11 +285,11 @@ const Header = () => {
                     exit="hidden"
                     className="absolute right-0 top-full pt-4"
                   >
-                    <motion.ul className="bg-blue/50 backdrop-blur-md border border-blue/50 rounded-2xl min-w-52 py-2">
+                    <motion.ul className="bg-cyan-400/70 backdrop-blur-md border border-blue/50 rounded-2xl min-w-52 py-2">
                       <motion.li variants={dropdownItem}>
                         <Link
                           to="/login/EmployeeLogin"
-                          className="block px-4 py-2 hover:text-red-500"
+                          className="block px-4 py-2 hover:text-white/70"
                         >
                           Employee Login
                         </Link>
@@ -408,7 +405,7 @@ const Header = () => {
                 </motion.li>
 
                 <motion.li variants={mobileItem}>
-                  <NavLink to="/login/employee">
+                  <NavLink to="/login/EmployeeLogin">
                     Employee Login
                   </NavLink>
                 </motion.li>

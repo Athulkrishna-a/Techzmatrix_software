@@ -1,205 +1,159 @@
 import { motion, AnimatePresence } from "framer-motion";
-import hero from '../../../assets/images/hero-tech.png'
-import texture from '../../../assets/images/texture-noise.png'
-import {  useState, useEffect } from "react";
-import {Link} from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
-import {
-    ArrowRight,
-    LockIcon,
-    RocketIcon,
-    ShieldIcon,
-
-} from "lucide-react";
+import hero from "../../../assets/images/hero-tech.png";
+import texture from "../../../assets/images/texture-noise.png";
 
 const slides = [
-    {
-        id: "a",
-        title: "Building Scalable Digital Products for the Future",
-        subtitle:
-            "Web applications, Android apps, cloud systems, and custom engineering—delivered with enterprise-grade rigor.",
-    },
-    {
-        id: "b",
-        title: "From prototype to platform — fast",
-        subtitle:
-            "Tight iteration loops, measurable performance, and design that ships without compromise.",
-    },
-    {
-        id: "c",
-        title: "Security-first architecture, by default",
-        subtitle:
-            "Threat modeling, hardening, and best practices baked into every delivery milestone.",
-    },
+  {
+    id: "a",
+    title: "Building Scalable Digital Products for the Future",
+    subtitle:
+      "Web applications, Android apps, cloud systems, and custom engineering—delivered with enterprise-grade rigor.",
+  },
+  {
+    id: "b",
+    title: "From prototype to platform — fast",
+    subtitle:
+      "Tight iteration loops, measurable performance, and design that ships without compromise.",
+  },
+  {
+    id: "c",
+    title: "Security-first architecture, by default",
+    subtitle:
+      "Threat modeling, hardening, and best practices baked into every delivery milestone.",
+  },
 ];
 
-const results = [
-    {
-        id: "1",
-        title: 'Edge latency',
-        subtitle: '12ms'
-    }, {
-        id: "2",
-        title: 'Queue depth',
-        subtitle: '1.3k'
-    }, {
-        id: "3",
-        title: 'CPU',
-        subtitle: '38%'
-    }, {
-        id: "4",
-        title: 'Error rate',
-        subtitle: '0.08%'
-    },
-]
 const HeroSection = () => {
+  const [active, setActive] = useState(0);
+  const [openVideo, setOpenVideo] = useState(false);
 
+  useEffect(() => {
+    const id = setInterval(
+      () => setActive((p) => (p + 1) % slides.length),
+      5200
+    );
+    return () => clearInterval(id);
+  }, []);
 
+  return (
+    <section className="relative w-full overflow-hidden">
+      
+      <div className="absolute inset-0">
+        <img
+          src={hero}
+          alt="Hero background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(1200px 700px at 18% 20%, rgba(229,57,53,.22), rgba(11,30,58,0) 60%), radial-gradient(1000px 600px at 86% 10%, rgba(102,204,255,.18), rgba(11,30,58,0) 55%), linear-gradient(180deg, rgba(11,30,58,.68), rgba(11,30,58,.92))",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-20 mix-blend-overlay"
+          style={{
+            backgroundImage: `url(${texture})`,
+            backgroundSize: "220px 220px",
+          }}
+        />
+      </div>
 
-    const [active, setActive] = useState(0);
+     
+      <div className="relative z-10 flex flex-col md:flex-row gap-20 py-20 px-6 md:px-16">
+      
+        <div className="basis-1/2 flex flex-col justify-center max-w-4xl">
+          <AnimatePresence mode="wait">
+            <motion.h1
+              key={slides[active].id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="text-4xl md:text-6xl font-semibold text-white"
+            >
+              {slides[active].title}
+            </motion.h1>
+          </AnimatePresence>
 
-    useEffect(() => {
-        const id = setInterval(() => {
-            setActive((prev) => (prev + 1) % slides.length);
-        }, 5200);
-        return () => clearInterval(id);
-    }, []);
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`sub-${slides[active].id}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="mt-6 max-w-xl text-white/75 text-lg"
+            >
+              {slides[active].subtitle}
+            </motion.p>
+          </AnimatePresence>
 
+          <div className="mt-10 flex gap-4">
+            <Link
+              to="/contact"
+              className="px-6 py-3 rounded-xl bg-white/20 text-white flex items-center gap-2 hover:bg-white/10 transition"
+            >
+              Start Your Project <ArrowRight />
+            </Link>
+          </div>
+        </div>
 
-    return (
-        <section className="relative w-full h-auto overflow-hidden  mx-auto">
-            <div className="absolute inset-0">
-                <img
-                    src={hero}
-                    alt="Hero background"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div
-                    className="absolute inset-0"
-                    style={{
-                        background:
-                            "radial-gradient(1200px 700px at 18% 20%, rgba(229,57,53,.22), rgba(11,30,58,0) 60%), radial-gradient(1000px 600px at 86% 10%, rgba(102,204,255,.18), rgba(11,30,58,0) 55%), linear-gradient(180deg, rgba(11,30,58,.68), rgba(11,30,58,.92))",
-                    }}
-                />
-                <div
-                    className="absolute inset-0 opacity-20 mix-blend-overlay"
-                    style={{ backgroundImage: `url(${texture})`, backgroundSize: "220px 220px" }}
-                />
-            </div>
-            <div
-                className="flex flex-col gap-20 md:flex-row my-10">
-                <div className="basis-1/2">
-                    <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 max-w-4xl">
+        
+        <div className="basis-1/2 flex items-center justify-center">
+          <motion.div
+            onClick={() => setOpenVideo(true)}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="w-full max-w-xl aspect-video cursor-pointer rounded-2xl border border-white/20 bg-black/60 backdrop-blur-xl flex items-center justify-center shadow-2xl"
+          >
+            <span className="text-white text-lg font-semibold">
+              ▶ Play Overview
+            </span>
+          </motion.div>
+        </div>
+      </div>
 
-                        
-                        <AnimatePresence mode="wait">
-                            <motion.h1
-                                key={slides[active].id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} // slower animation
-                                className="text-4xl md:text-6xl font-semibold tracking-tight text-white"
-                            >
-                                <span className="text-gradient">{slides[active].title}</span>
-                            </motion.h1>
-                        </AnimatePresence>
+      <AnimatePresence>
+        {openVideo && (
+          <motion.div
+            className="fixed inset-0 z-999 bg-black/80 backdrop-blur-md flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="relative w-[90%] max-w-5xl aspect-video rounded-2xl overflow-hidden bg-black"
+              initial={{ scale: 0.85, y: 40 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.85, y: 40 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <button
+                onClick={() => setOpenVideo(false)}
+                className="absolute top-4 right-4 z-10 text-white bg-black/60 rounded-full px-3 py-1"
+              >
+                ✕
+              </button>
 
-                        <AnimatePresence mode="wait">
-                            <motion.p
-                                key={`subtitle-${slides[active].id}`}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -15 }}
-                                transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }} // slower than title
-                                className="mt-5 max-w-xl text-base md:text-lg text-white/75 leading-relaxed"
-                            >
-                                {slides[active].subtitle}
-                            </motion.p>
-                        </AnimatePresence>
-                        <motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                                className="mt-10 flex flex-wrap gap-4"
-                            >
-                                <button className="rounded-xl border-white/20 bg-white/20 px-6 py-3 font-medium hover:bg-white/10">
-                                    <div className="flex items-center gap-2 text-white group font-Cabin">
-
-                                        <Link to="/contact">Start Your Project</Link>
-                                        <ArrowRight className="group-hover:translate-x-2 ease-linear duration-500" />
-                                    </div>
-                                </button>
-                                <button className="rounded-xl border border-white/20 px-6 py-3 hover:bg-white/10">
-                                    <div className="flex items-center gap-2 text-white group font-Cabin">
-                                        <h1>Explore Services</h1>
-                                        <ArrowRight className="group-hover:translate-x-2 ease-linear duration-500" />
-                                    </div>
-                                </button>
-                            </motion.div>
-                        </motion.div>
-                       
-                    </div>
-                </div>
-                <div className="basis-1/2 flex items-center justify-center">
-                    {/* <motion.div className="w-full mx-10 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-xl p-4 shadow-2xl shadow-white/30 text-white">
-                        <div
-                            className="absolute inset-0 rounded-2xl"
-                            style={{
-                                background:
-                                    "radial-gradient(1200px 700px at 18% 20%, rgba(229,57,53,.22), rgba(11,30,58,0) 60%), radial-gradient(1000px 600px at 86% 10%, rgba(102,204,255,.18), rgba(11,30,58,0) 55%), linear-gradient(180deg, rgba(11,30,58,.68), rgba(11,30,58,.92)) ",
-                            }}
-                        />
-                        <div className=" relative">
-
-                            <div className=" flex text-white.30 items-center justify-between text-xs">
-                                <h1>
-                                    live system
-                                </h1>
-                                <div className="flex gap-1 items-center justify-between text-xs">
-                                    <div className="h-1.5 w-1.5 rounded-full bg-green-500 mt-0.5 " />
-                                    <h1>uptime 99.99%</h1>
-                                </div>
-                            </div>
-                            <div>
-                                {
-                                    results.map((item) => {
-                                        return (
-                                            <div
-                                                className="mt-3 border shadow-2xl shadow-blue-200/20 rounded-2xl  border-white/20 bg-white/5 backdrop-blur-xl p-4 text-white"
-                                                key={results.id}>
-
-                                                <div
-                                                    className="flex justify-between">
-                                                    <h1
-                                                        className="text-sm">{item.title}</h1>
-
-                                                    <h2 className="text-sm">{item.id}/4</h2>
-                                                </div>
-                                                <div
-                                                    className="py-3">
-                                                    <h2
-                                                        className="text-2xl">{item.subtitle}</h2>
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                            <div
-                                className="py-2 text-xs">
-                                <h1>-Observability  -incident response   -cost controls</h1>
-                            </div>
-                        </div>
-                    </motion.div> */}
-                </div>
-            </div>
-        </section>
-    )
-}
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/Hgg7M3kSqyE?autoplay=1"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+                title="Hero Video"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
 
 export default HeroSection;
-
-

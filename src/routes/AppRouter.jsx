@@ -3,15 +3,16 @@ import Home from "../features/home/Home.jsx";
 import MainLayout from "../layouts/MainLayout.jsx";
 import NotFound from "../features/error/Notfound.jsx";
 import ContactUs from "../features/contact/ContactUs.jsx";
-import Aboutus from "../features/about/Aboutus.jsx";
-import Career from "../features/about/pages/Career.jsx";
-import LifeAtTechzmatrix from "../features/about/pages/LifeAtTechzmatrix.jsx";
+import Aboutus from "../features/about/aboutus/Aboutus.jsx";
+import LifeAtTechzmatrix from "../features/about/lifeAt/LifeAtTechzmatrix.jsx";
 import Webdevelop from "../features/services/pages/Webdevelopment/Webdevelop.jsx";
 import AppDevelop from "../features/services/pages/appdevelopement/AppDevelop.jsx";
 import Clouddevelop from "../features/services/pages/clouddevelopment/Clouddevelop.jsx";
 import EmployeeLogin from "../features/auth/EmployeeLogin.jsx";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 import EmployeeSignup from "../features/auth/EmployeeSignup.jsx"
+import JobInfo from "../features/about/career/pages/JobsInfo.jsx";
+import Careers from "../features/about/career/Careers.jsx";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -32,10 +33,6 @@ export const AppRouter = createBrowserRouter([
                 element: <Aboutus />
             },
             {
-                path: "/careers",
-                element: <Career />
-            }
-            , {
                 path: "/LifeAtTechzmatrix",
                 element: <LifeAtTechzmatrix />
             },
@@ -51,7 +48,16 @@ export const AppRouter = createBrowserRouter([
                 path: "/services/CloudDevelopment",
                 element: <Clouddevelop />
             },
-            
+            {
+                path: "/careers",
+                element: <Careers />
+            },
+            {
+                path:
+                    "/careers/:jobId",
+                element: <JobInfo />
+            }
+
         ]
     },
     {
