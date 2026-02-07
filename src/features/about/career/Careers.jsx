@@ -4,6 +4,7 @@ import { jobs } from "../career/data/Jobs";
 import HiringProcess from "../career/components/HiringProcess";
 import CTA from "../../contact/components/CTA";
 import JobCard from "../career/components/JobCard"
+import { useEffect } from "react"
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,6 +26,10 @@ const itemVariants = {
 };
 
 const Careers = () => {
+    useEffect(() => {
+        document.title = 'Careers | Techzmatrix Software Technologies'
+    }, [])
+
     const [showAll, setShowAll] = useState(false);
     const visibleJobs = showAll ? jobs : jobs.slice(0, 6);
 
@@ -35,7 +40,7 @@ const Careers = () => {
             variants={containerVariants}
             className="relative min-h-screen overflow-hidden text-white"
         >
-           
+
             <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
@@ -64,7 +69,7 @@ const Careers = () => {
                     Careers
                 </p>
 
-                <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-semibold">
+                <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl text-cyan-300 font-semibold">
                     Build with us
                 </h1>
 
@@ -125,7 +130,7 @@ const Careers = () => {
                         )}
                     </motion.div>
 
-                   
+
                     <motion.div
                         variants={itemVariants}
                         className="mt-8 md:mt-0"

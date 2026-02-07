@@ -29,7 +29,7 @@ const ContactUs = () => {
       />
 
       <motion.div
-        className='p-15'>
+        className='px-5 py-10 md:p-15'>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

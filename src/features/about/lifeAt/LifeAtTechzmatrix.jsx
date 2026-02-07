@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import CTA from "../../contact/components/CTA"
 import BenefitsAccordion from "./components/BenefitsAccordion";
+import { useEffect } from "react"
 
 const LifeAtTechzmatrix = () => {
 
@@ -49,7 +50,9 @@ const LifeAtTechzmatrix = () => {
     },
   ];
 
-
+  useEffect(() => {
+    document.title = 'Life at Techzmatrix'
+  }, [])
   const posts = [
     { id: 1, src: "https://source.unsplash.com/600x600/?soccer", alt: "Sports", caption: "Logout, Lace Up!" },
     { id: 2, src: "https://source.unsplash.com/600x600/?office,team", alt: "Team Meeting", caption: "" },
@@ -212,7 +215,7 @@ const LifeAtTechzmatrix = () => {
             ))}
           </div>
         </div>
-      <BenefitsAccordion/>
+        <BenefitsAccordion />
       </div>
       <CTA />
     </section>

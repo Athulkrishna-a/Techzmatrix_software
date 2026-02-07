@@ -247,36 +247,36 @@ const HeroSection = () => {
               <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
                 {[
                   {
-                    name: "AnandRathi",
-                    src: "https://upload.wikimedia.org/wikipedia/en/5/57/Anand_Rathi_logo.png",
+                    name: "Client 1",
+                    src: "",
                   },
                   {
-                    name: "ArcelorMittal",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/4/4f/ArcelorMittal_logo.svg",
+                    name: "Client 1",
+                    src: "",
                   },
                   {
-                    name: "SBI",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/c/cc/SBI-logo.svg",
+                    name: "Client 1",
+                    src: "",
                   },
                   {
-                    name: "Mahindra",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Mahindra_Rise_Logo.png",
+                    name: "Client 1",
+                    src: "",
                   },
-                  {
-                    name: "DHL",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/b/b3/DHL_Logo.svg",
+                   {
+                    name: "Client 1",
+                    src: "",
                   },
-                  {
-                    name: "Hitachi",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Hitachi_logo.svg",
+                   {
+                    name: "Client 1",
+                    src: "",
                   },
-                  {
-                    name: "OLX",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/9/9c/OLX_Logo.svg",
+                   {
+                    name: "Client 1",
+                    src: "",
                   },
-                  {
-                    name: "Del Monte",
-                    src: "https://upload.wikimedia.org/wikipedia/en/8/8b/Del_Monte_logo.svg",
+                   {
+                    name: "Client 1",
+                    src: "",
                   },
                 ].map((brand) => (
                   <motion.div

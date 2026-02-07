@@ -8,6 +8,8 @@ const CTA = () => {
     return (
         <section className="relative py-25 px-6 overflow-hidden">
 
+
+
             <div
                 className="absolute inset-0 z-0"
                 style={{
@@ -51,9 +53,25 @@ const CTA = () => {
           justify-between
           gap-10
           glow-red
+          relative
         "
-            >
-
+            > <div
+                    className="absolute inset-0 z-0 pointer-events-none"
+                    style={{
+                        backgroundImage: `
+        repeating-linear-gradient(30deg, 
+          rgba(255, 100, 0, 0.1) 0, 
+          rgba(255, 100, 0, 0.1) 1px, 
+          transparent 1px, 
+          transparent 10px,
+          rgba(255, 100, 0, 0.15) 11px, 
+          rgba(255, 100, 0, 0.15) 12px, 
+          transparent 12px, 
+          transparent 40px
+        )
+      `,
+                    }}
+                />
                 <motion.div
                     initial={{ opacity: 0, x: -40 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -83,7 +101,7 @@ const CTA = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.25, duration: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-4"
+                    className="flex flex-col sm:flex-row gap-4 group"
                 >
 
                     <motion.button
@@ -97,30 +115,16 @@ const CTA = () => {
               bg-white/20
               px-4 py-4
               text-white
-              hover:bg-white/5
+              hover:bg-white/5 gap-2
             "
                     >
                         <Link to="/contact">Start Your Project</Link>
-                        <ArrowRight size={18} />
+                        <ArrowRight size={18}
+                            className="group-hover:translate-x-2 transition duration-400 ease-linear" />
                     </motion.button>
 
 
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.96 }}
-                        className="
-              inline-flex items-center justify-center
-               rounded-2xl
-               font-Cabin
-              border border-blue-400/40
-              px-4 py-4
-              text-white/90
-              hover:bg-white/5
-            "
-                    >
-                        Explore Services
 
-                    </motion.button>
                 </motion.div>
             </motion.div>
         </section>

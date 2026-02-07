@@ -113,7 +113,7 @@ const Header = () => {
       className="sticky top-0 z-50 border-b border-white/10"
     >
       <nav className="text-white font-bricolage">
-      
+
         <div className="flex items-center h-20 px-4 md:px-12">
           <Link to="/" className="shrink-0">
             <img src={Techzmatrix} className="w-36 object-contain" />
@@ -121,9 +121,9 @@ const Header = () => {
 
           <div className="flex-1" />
 
-       
+
           <ul className="hidden md:flex items-center gap-4">
-          
+
             <motion.li
               variants={navItem}
               initial="rest"
@@ -147,7 +147,7 @@ const Header = () => {
               />
             </motion.li>
 
-           
+
             <li
               className="relative"
               onMouseEnter={() => setDesktopMenu("who")}
@@ -196,7 +196,7 @@ const Header = () => {
               </AnimatePresence>
             </li>
 
-         
+
             <li
               className="relative"
               onMouseEnter={() => setDesktopMenu("services")}
@@ -223,7 +223,7 @@ const Header = () => {
                     <motion.ul className="bg-cyan-400/70 backdrop-blur-md border border-blue/50 rounded-2xl min-w-56 py-2">
                       {[
                         ["Web Development", "/services/Webdevelopment"],
-                        ["Mobile Apps", "/services/Appdevelopment"],
+                        ["App Development", "/services/Appdevelopment"],
                         ["Cloud Solutions", "/services/CloudDevelopment"],
                       ].map(([label, path]) => (
                         <motion.li
@@ -244,14 +244,14 @@ const Header = () => {
               </AnimatePresence>
             </li>
 
-           
+
             <motion.li
               variants={navItem}
               initial="rest"
               whileHover="hover"
             >
-              <NavLink to="/contact" 
-            className={({ isActive }) =>
+              <NavLink to="/contact"
+                className={({ isActive }) =>
                   `px-3 py-2 rounded-xl inline-block ${isActive ? activeClass : ""
                   }`
                 }>
@@ -265,7 +265,7 @@ const Header = () => {
               onMouseEnter={() => setDesktopMenu("user")}
               onMouseLeave={() => setDesktopMenu(null)}
             >
-             
+
               <motion.span
                 variants={navItem}
                 initial="rest"
@@ -275,7 +275,7 @@ const Header = () => {
                 <User />
               </motion.span>
 
-              
+
               <AnimatePresence>
                 {desktopMenu === "user" && (
                   <motion.div
@@ -332,7 +332,7 @@ const Header = () => {
                   </NavLink>
                 </motion.li>
 
-               
+
                 <motion.button
                   variants={mobileItem}
                   onClick={() =>
@@ -359,13 +359,13 @@ const Header = () => {
                       className="pl-4 flex flex-col gap-2"
                     >
                       <Link to="/about">About Us</Link>
-                      <Link to="/life">Life@Techzmatrix</Link>
+                      <Link to="/LifeAtTechzmatrix">Life@Techzmatrix</Link>
                       <Link to="/careers">Careers</Link>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                {/* Mobile Services */}
+
                 <motion.button
                   variants={mobileItem}
                   onClick={() =>
@@ -393,9 +393,9 @@ const Header = () => {
                       exit="hidden"
                       className="pl-4 flex flex-col gap-2"
                     >
-                      <Link to="/services/web">Web Development</Link>
-                      <Link to="/services/mobile">Mobile Apps</Link>
-                      <Link to="/services/cloud">Cloud Solutions</Link>
+                      <Link to="/services/Webdevelopment">Web Development</Link>
+                      <Link to="/services/Appdevelopment">App Development</Link>
+                      <Link to="/services/CloudDevelopment">Cloud Solutions</Link>
                     </motion.div>
                   )}
                 </AnimatePresence>

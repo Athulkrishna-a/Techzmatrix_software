@@ -12,6 +12,8 @@ import {
   Github,
   Instagram,
   InstagramIcon,
+  FacebookIcon,
+  YoutubeIcon
 
 } from "lucide-react";
 
@@ -24,17 +26,17 @@ const fadeUp = {
 const Footer = () => {
   return (
     <footer className="bg-[#0B1E3A] relative overflow-hidden text-white inset-shadow-sm inset-shadow-cyan-500/30 ">
-     <div
-  className="absolute inset-0 z-0 pointer-events-none"
-  style={{
-    backgroundImage: `
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          backgroundImage: `
       radial-gradient(circle, rgba(139,92,246,0.6) 1px, transparent 1px),
       radial-gradient(circle, rgba(59,130,246,0.4) 1px, transparent 1px),
       radial-gradient(circle, rgba(236,72,153,0.5) 1px, transparent 1px)
     `,
-    backgroundSize: "20px 20px, 40px 40px, 60px 60px",
-  }}
-/>
+          backgroundSize: "20px 20px, 40px 40px, 60px 60px",
+        }}
+      />
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -77,10 +79,9 @@ const Footer = () => {
         <motion.div variants={fadeUp}>
           <h4 className="text-base font-semibold mb-3">Services</h4>
           <ul className="space-y-2 text-sm text-white/70">
-            <li>Web Development</li>
-            <li>Mobile App Development</li>
-            <li>Cloud Solutions</li>
-            <li>UI / UX Design</li>
+            <li><Link to="/services/Webdevelopment" className="hover:text-white">Web Development</Link></li>
+            <li><Link to="/services/Appdevelopment" className="hover:text-white">App Development</Link></li>
+            <li><Link to="/services/CloudDevelopment" className="hover:text-white">Cloud Development</Link></li>
           </ul>
         </motion.div>
 
@@ -142,18 +143,23 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-5 text-white/70">
-            <a href="#" aria-label="LinkedIn" className="hover:text-white">
+            <a href="https://www.linkedin.com/company/techzmatrix/?originalSubdomain=in" aria-label="LinkedIn" className="hover:text-white">
               <Linkedin size={18} />
             </a>
-            <a href="#" aria-label="Twitter" className="hover:text-white">
-              <Twitter size={18} />
-            </a>
-            <a href="#" aria-label="Github" className="hover:text-white">
-              <Github size={18} />
-            </a>
-            <a href="#" aria-label="LinkedIn" className="hover:text-white">
+            <a href="https://www.instagram.com/techzmatrix/" aria-label="LinkedIn" className="hover:text-white">
               <InstagramIcon size={18} />
             </a>
+            <a href="https://www.youtube.com/@Techzmatrix" aria-label="Github" className="hover:text-white">
+              < YoutubeIcon size={18} />
+            </a>
+
+            <a href="https://www.facebook.com/tst.career/#" aria-label="Github" className="hover:text-white">
+              <FacebookIcon size={18} />
+             
+            </a>
+             <a href="https://x.com/techzmatrixxx" aria-label="Twitter" className="hover:text-white">
+                <Twitter size={18} />
+              </a>
           </div>
         </div>
       </div>

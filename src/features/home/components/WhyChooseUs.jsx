@@ -71,7 +71,7 @@ const WhyChooseUs = () => {
                 variants={stagger}
                 initial="hidden"
                 whileInView="visible"
-                className="mx-10 my-10"
+                className="md:mx-10 mx-1.5 my-10"
             >
                 <motion.div>
 
@@ -128,11 +128,11 @@ const WhyChooseUs = () => {
                                 <motion.div key={item.id}
                                     whileHover={{ y: -4 }}
                                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                    className="rounded-2xl text-white tm-glass tm-noise  shadow-2xs shadow-blue-300  border border-white/10 bg-white/5 p-6">
+                                    className="rounded-2xl text-white tm-glass tm-noise  shadow-2xs shadow-blue-300  border border-white/10 bg-white/5 p-3 md:p-6">
 
                                     <item.icon size={30} className="my-3" />
                                     <h1 className="text-blue-400">{item.title}</h1>
-                                    <h2 className="text-white/70">{item.subtitle}</h2>
+                                    <h2 className="text-white/70 text-sm py-2">{item.subtitle}</h2>
                                 </motion.div>
                             ))
                         }

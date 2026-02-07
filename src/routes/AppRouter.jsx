@@ -5,9 +5,9 @@ import NotFound from "../features/error/Notfound.jsx";
 import ContactUs from "../features/contact/ContactUs.jsx";
 import Aboutus from "../features/about/aboutus/Aboutus.jsx";
 import LifeAtTechzmatrix from "../features/about/lifeAt/LifeAtTechzmatrix.jsx";
-import Webdevelop from "../features/services/pages/Webdevelopment/Webdevelop.jsx";
-import AppDevelop from "../features/services/pages/appdevelopement/AppDevelop.jsx";
-import Clouddevelop from "../features/services/pages/clouddevelopment/Clouddevelop.jsx";
+import Webdevelop from "../features/services/Webdevelopment/Webdevelop.jsx";
+import AppDevelop from "../features/services/appdevelopement/AppDevelop.jsx";
+import Clouddevelop from "../features/services/clouddevelopment/Clouddevelop.jsx";
 import EmployeeLogin from "../features/auth/EmployeeLogin.jsx";
 import AuthLayout from "../layouts/AuthLayout.jsx";
 import EmployeeSignup from "../features/auth/EmployeeSignup.jsx"
@@ -38,7 +38,7 @@ export const AppRouter = createBrowserRouter([
             },
             {
                 path: "/services/Webdevelopment",
-                element: <Webdevelop />
+                element: <Webdevelop/>
             },
             {
                 path: "/services/Appdevelopment",

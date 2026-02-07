@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import hero from "../../../assets/images/hero-tech.png";
-import texture from "../../../assets/images/texture-noise.png";
+
 
 const slides = [
   {
@@ -55,13 +55,7 @@ const HeroSection = () => {
               "radial-gradient(1200px 700px at 18% 20%, rgba(229,57,53,.22), rgba(11,30,58,0) 60%), radial-gradient(1000px 600px at 86% 10%, rgba(102,204,255,.18), rgba(11,30,58,0) 55%), linear-gradient(180deg, rgba(11,30,58,.68), rgba(11,30,58,.92))",
           }}
         />
-        <div
-          className="absolute inset-0 opacity-20 mix-blend-overlay"
-          style={{
-            backgroundImage: `url(${texture})`,
-            backgroundSize: "220px 220px",
-          }}
-        />
+       
       </div>
 
      
@@ -75,7 +69,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl md:text-6xl font-semibold text-white"
+              className="text-4xl md:text-6xl font-semibold text-cyan-300"
             >
               {slides[active].title}
             </motion.h1>
@@ -88,7 +82,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="mt-6 max-w-xl text-white/75 text-lg"
+              className="mt-6 max-w-xl text-white text-lg"
             >
               {slides[active].subtitle}
             </motion.p>

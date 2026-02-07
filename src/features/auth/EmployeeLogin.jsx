@@ -73,7 +73,7 @@ const EmployeeLogin = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2  tm-glass tm-noise gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
 
-          <div className="w-full h-auto relative overflow-hidden rounded-xl">
+          <div className="w-full h-auto relative block overflow-hidden rounded-xl">
             <AnimatePresence mode="wait">
               <motion.img
                 key={index}
@@ -97,7 +97,7 @@ const EmployeeLogin = () => {
           >
             <h2 className="text-3xl font-bold mb-2">Hello 👋</h2>
             <p className="text-white/70 mb-6">
-              Login to your employee account
+              Login to your account
             </p>
 
             <form className="space-y-4">
@@ -111,6 +111,14 @@ const EmployeeLogin = () => {
                 placeholder="Password"
                 className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
               />
+              <p className="text-sm text-white/70 mt-4">
+                Don't Remember Password?{" "}
+                <span className="text-blue-400 cursor-pointer hover:underline">
+                  <Link to='/Login/EmployeeSignup'>
+                    Reset
+                  </Link>
+                </span>
+              </p>
 
               <button
                 type="submit"
