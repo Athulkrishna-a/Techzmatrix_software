@@ -1,21 +1,23 @@
-
-import techzmatrix from "../../assets/images/Techzmatrix_software.png"
-import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import google1 from "../../assets/images/google1.jpeg"
-import google2 from "../../assets/images/google2.jpeg"
-import google3 from "../../assets/images/google3.jpeg"
-import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+
+import techzmatrix from "../../assets/images/Techzmatrix_software.png";
+import google1 from "../../assets/images/google1.jpeg";
+import google2 from "../../assets/images/google2.jpeg";
+import google3 from "../../assets/images/google3.jpeg";
+
 const EmployeeLogin = () => {
-
-
-  const images = [
-    google1,
-    google2,
-    google3
-  ];
+  const images = [google1, google2, google3];
 
   const [index, setIndex] = useState(0);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,62 +25,99 @@ const EmployeeLogin = () => {
     }, 3000);
 
     return () => clearInterval(interval);
+  }, [images.length]);
+
+  
+  useEffect(() => {
+    document.title = "Employee Login | Techzmatrix Software Technologies";
   }, []);
 
-  useEffect(() => {
-    document.title = 'Employee Login | Techzmatrix Software Technologies'
-  }, [])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }));
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+
+    console.log("Login data:", formData);
+  
+  };
+
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-
+      
       <div
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-           linear-gradient(
-               to right,
-               rgba(355, 255, 255, 0.035) 1px,
-                transparent 1px),
-          linear-gradient( to bottom,   rgba(255, 255, 255, 0.055) 1px,  transparent 1px),
-  radial-gradient(circle 800px at 0% 200px,rgba(95, 153, 196, 0.35),transparent 0%)
-      `,
+            linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.055) 1px, transparent 1px),
+            radial-gradient(circle 800px at 0% 200px, rgba(95,153,196,0.35), transparent 70%)
+          `,
           backgroundSize: "96px 64px, 96px 64px, 100% 100%",
         }}
       />
 
-
       <motion.div
-        className="relative z-10 max-w-6xl  mx-auto px-6 py-10"
+        className="relative z-10 max-w-6xl mx-auto px-6 py-10"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.8 }}
       >
-
+        
         <div className="flex items-center justify-between mb-10">
-          <div className=" items-center ">
-            <img
-              src={techzmatrix}
-              alt="Company Logo"
-              className="w-40 h-15 rounded"
-            />
+          <img src={techzmatrix} alt="Company Logo" className="w-40" />
 
-          </div>
-
-          <button className="px-5 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition">
-            <Link to='/'>
-              Go Home
-            </Link>
-          </button>
+          <Link
+            to="/"
+            className="px-5 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition"
+          >
+            Go Home
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2  tm-glass tm-noise gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
-
-          <div className="w-full h-auto relative block overflow-hidden rounded-xl">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
+          
+          <div className="relative overflow-hidden rounded-xl h-80 md:h-auto">
             <AnimatePresence mode="wait">
               <motion.img
                 key={index}
                 src={images[index]}
-                alt="Rotating visual"
+                alt="Visual"
                 className="absolute inset-0 w-full h-full object-cover"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -88,7 +127,7 @@ const EmployeeLogin = () => {
             </AnimatePresence>
           </div>
 
-
+          
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -100,24 +139,53 @@ const EmployeeLogin = () => {
               Login to your account
             </p>
 
-            <form className="space-y-4">
-              <input
-                type="email"
-                placeholder="Email"
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
-              />
-              <p className="text-sm text-white/70 mt-4">
-                Don't Remember Password?{" "}
-                <span className="text-blue-400 cursor-pointer hover:underline">
-                  <Link to='/Login/EmployeeSignup'>
-                    Reset
-                  </Link>
-                </span>
+            <form
+              className="space-y-4"
+              onSubmit={handleSubmit}
+              noValidate
+            >
+              
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.email}
+                  </p>
+                )}
+              </div>
+
+             
+              <div>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
+                />
+                {errors.password && (
+                  <p className="mt-1 text-sm text-red-400">
+                    {errors.password}
+                  </p>
+                )}
+              </div>
+
+              <p className="text-sm text-white/70">
+                Don’t remember password?{" "}
+                <Link
+                  to="/Login/ForgotPassword"
+                  className="text-blue-400 hover:underline"
+                >
+                  Reset
+                </Link>
               </p>
 
               <button
@@ -130,11 +198,12 @@ const EmployeeLogin = () => {
 
             <p className="text-sm text-white/70 mt-4">
               Don’t have an account?{" "}
-              <span className="text-blue-400 cursor-pointer hover:underline">
-                <Link to='/Login/EmployeeSignup'>
-                  signup
-                </Link>
-              </span>
+              <Link
+                to="/Login/EmployeeSignup"
+                className="text-blue-400 hover:underline"
+              >
+                Signup
+              </Link>
             </p>
           </motion.div>
         </div>

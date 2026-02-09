@@ -13,6 +13,7 @@ import AuthLayout from "../layouts/AuthLayout.jsx";
 import EmployeeSignup from "../features/auth/EmployeeSignup.jsx"
 import JobInfo from "../features/about/career/pages/JobsInfo.jsx";
 import Careers from "../features/about/career/Careers.jsx";
+import ForgotPassword from "../features/auth/ForgotPassword.jsx";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -72,6 +73,10 @@ export const AppRouter = createBrowserRouter([
             {
                 path: "EmployeeSignup",
                 element: <EmployeeSignup />
+            },
+            {
+                path: "ForgotPassword",
+                element: <ForgotPassword/>
             }
         ],
     }

@@ -176,7 +176,7 @@ const Header = () => {
                         ["About Us", "/about"],
                         ["Life@Techzmatrix", "/LifeAtTechzmatrix"],
                         ["Careers", "/careers"],
-                        ["Software Training ", "/careers"],
+                        ["Software Training ", "https://techzmatrix.in/"],
                       ].map(([label, path]) => (
                         <motion.li
                           key={path}
