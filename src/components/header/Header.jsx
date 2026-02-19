@@ -110,7 +110,7 @@ const Header = () => {
         backdropFilter: scrolled ? "blur(16px)" : "blur(0px)",
       }}
       transition={{ duration: 0.3 }}
-      className="sticky top-0 z-50 border-b border-white/10"
+      className="sticky top-0 z-50 border-b border-white/10 font-serif font-bold"
     >
       <nav className="text-white font-bricolage">
 
@@ -285,13 +285,13 @@ const Header = () => {
                     exit="hidden"
                     className="absolute right-0 top-full pt-4"
                   >
-                    <motion.ul className="bg-cyan-400/70 backdrop-blur-md border border-blue/50 rounded-2xl min-w-52 py-2">
+                    <motion.ul className="bg-cyan-400/70 backdrop-blur-md border border-blue/50 rounded-2xl min-w-30 py-2">
                       <motion.li variants={dropdownItem}>
                         <Link
                           to="/login/EmployeeLogin"
-                          className="block px-4 py-2 hover:text-white/70"
+                          className="block px-6 py-2 hover:text-white/70"
                         >
-                          Employee Login
+                           Login
                         </Link>
                       </motion.li>
                     </motion.ul>
@@ -406,7 +406,7 @@ const Header = () => {
 
                 <motion.li variants={mobileItem}>
                   <NavLink to="/login/EmployeeLogin">
-                    Employee Login
+                    Login
                   </NavLink>
                 </motion.li>
               </motion.ul>

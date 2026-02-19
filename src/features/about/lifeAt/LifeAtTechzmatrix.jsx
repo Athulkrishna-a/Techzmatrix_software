@@ -149,7 +149,7 @@ const LifeAtTechzmatrix = () => {
           </p>
 
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+          <div className="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
             {videoStories.map((video, idx) => (
               <div key={idx} className="bg-white/20 tm-glass tm-noise backdrop-blur-lg rounded-lg overflow-hidden group">
                 <div className="relative">
@@ -181,7 +181,7 @@ const LifeAtTechzmatrix = () => {
           </div>
 
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {quoteStories.map((quote, idx) => (
               <div key={idx} className="bg-white text-black p-6 rounded-lg flex flex-col justify-between shadow-md">
                 <p className="text-lg font-medium mb-4">&ldquo;{quote.quote}&rdquo;</p>

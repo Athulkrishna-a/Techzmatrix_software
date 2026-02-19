@@ -72,7 +72,7 @@ const cloudBackendTechs = [
 
 
   useEffect(() => {
-    document.title = 'Cloud & Back-End Development | Techzmatrix Software Technologies'
+    document.title = 'Cloud & Back-End Development '
   }, [])
   return (
     <section className="relative overflow-hidden">
@@ -111,7 +111,7 @@ const cloudBackendTechs = [
 
       <FeatureCloud />
       <ProcessCloud />
-      <div className="px-5">
+      <div className="px-5 md:px-12">
         <ServiceCard
           title="Backends That Scale. Reliably."
           description="Secure, high-performance backend systems and cloud infrastructure built for growth."

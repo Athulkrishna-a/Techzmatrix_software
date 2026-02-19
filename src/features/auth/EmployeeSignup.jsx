@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 import techzmatrix from "../../assets/images/Techzmatrix_software.png";
@@ -7,8 +8,9 @@ import google1 from "../../assets/images/google1.jpeg";
 import google2 from "../../assets/images/google2.jpeg";
 import google3 from "../../assets/images/google3.jpeg";
 
-const EmployeeLogin = () => {
+const EmployeeSignup = () => {
   const images = [google1, google2, google3];
+  const navigate = useNavigate();
 
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -20,71 +22,50 @@ const EmployeeLogin = () => {
 
   const [errors, setErrors] = useState({});
 
- 
   useEffect(() => {
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % images.length);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [images.length]);
 
   useEffect(() => {
-    document.title = "Employee Signup | Techzmatrix Software Technologies";
+    document.title = "Employee Signup ";
   }, []);
 
- 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: "",
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
-  
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^\S+@\S+\.\S+$/.test(formData.email))
       newErrors.email = "Invalid email format";
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
+    if (!formData.password) newErrors.password = "Password is required";
+    else if (formData.password.length < 6)
       newErrors.password = "Password must be at least 6 characters";
-    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
- 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()) return; 
 
     console.log("Valid form data:", formData);
-   
+
+    
+    navigate("/login/EmployeeLogin");
   };
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-      
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -103,9 +84,8 @@ const EmployeeLogin = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-       
         <div className="flex items-center justify-between mb-10">
-          <img src={techzmatrix} alt="Techzmatrix Logo" className="w-40" />
+          <img src={techzmatrix} alt="Company Logo" className="w-40" />
 
           <Link
             to="/"
@@ -116,7 +96,6 @@ const EmployeeLogin = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
-         
           <div className="relative overflow-hidden rounded-xl h-80 md:h-auto">
             <AnimatePresence mode="wait">
               <motion.img
@@ -132,7 +111,6 @@ const EmployeeLogin = () => {
             </AnimatePresence>
           </div>
 
-         
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -140,12 +118,9 @@ const EmployeeLogin = () => {
             className="flex flex-col justify-center text-white"
           >
             <h2 className="text-3xl font-bold mb-2">Hello 👋</h2>
-            <p className="text-white/70 mb-6">
-              Create your employee account
-            </p>
+            <p className="text-white/70 mb-6">Create your employee account</p>
 
-            <form className="space-y-4" onSubmit={handleSubmit}  noValidate>
-             
+            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
               <div>
                 <input
                   type="text"
@@ -174,7 +149,6 @@ const EmployeeLogin = () => {
                 )}
               </div>
 
-             
               <div>
                 <input
                   type="password"
@@ -185,9 +159,7 @@ const EmployeeLogin = () => {
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
                 />
                 {errors.password && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.password}
-                  </p>
+                  <p className="mt-1 text-sm text-red-400">{errors.password}</p>
                 )}
               </div>
 
@@ -195,18 +167,18 @@ const EmployeeLogin = () => {
                 type="submit"
                 className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition font-semibold"
               >
-                Sign up
+                Sign Up
               </button>
             </form>
 
             <p className="text-sm text-white/70 mt-4">
               Already have an account?{" "}
-              <Link
-                to="/login/EmployeeLogin"
-                className="text-blue-400 hover:underline"
+              <span
+                className="text-blue-400 hover:underline cursor-pointer"
+                onClick={() => navigate("/login/EmployeeLogin")}
               >
                 Login
-              </Link>
+              </span>
             </p>
           </motion.div>
         </div>
@@ -215,4 +187,4 @@ const EmployeeLogin = () => {
   );
 };
 
-export default EmployeeLogin;
+export default EmployeeSignup;

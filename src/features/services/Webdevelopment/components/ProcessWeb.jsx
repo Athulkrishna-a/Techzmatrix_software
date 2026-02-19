@@ -30,7 +30,7 @@ const steps = [
 
 const ProcessWeb = () => {
   return (
-    <section className="py-24 px-6 md:px-12 min-h-screen font-sans text-white">
+    <section className=" py-24 px-6 md:px-12 min-h-screen font-sans text-white">
       <div className="max-w-7xl mx-auto">
         
         <div className="mb-16">

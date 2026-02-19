@@ -27,7 +27,7 @@ const services = [
     icon: Cloud,
     title: "Cloud & Backend",
     desc: "Cloud infrastructure, observability, and reliability engineering for long-term scale.",
-    path: "/services/Webdevelopment",
+    path: "/services/CloudDevelopment",
   },
 ];
 

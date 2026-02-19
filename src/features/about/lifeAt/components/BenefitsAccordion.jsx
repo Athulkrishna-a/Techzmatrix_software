@@ -52,7 +52,7 @@ const BenefitsAccordion = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 px-4 md:px-0">
+    <div className="max-w-3xl mx-auto mt-10 px-4 md:px-7">
       <h2 className="text-cyan-400 text-2xl md:text-3xl font-bold mb-2">
         Benefits that make a difference
       </h2>

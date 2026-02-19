@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom"
+
 
 import techzmatrix from "../../assets/images/Techzmatrix_software.png";
 import google1 from "../../assets/images/google1.jpeg";
@@ -9,6 +11,7 @@ import google3 from "../../assets/images/google3.jpeg";
 
 const EmployeeLogin = () => {
   const images = [google1, google2, google3];
+  const navigate = useNavigate();
 
   const [index, setIndex] = useState(0);
 
@@ -27,11 +30,9 @@ const EmployeeLogin = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  
   useEffect(() => {
-    document.title = "Employee Login | Techzmatrix Software Technologies";
+    document.title = "Employee Login ";
   }, []);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,19 +67,28 @@ const EmployeeLogin = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm()) return; 
 
     console.log("Login data:", formData);
-  
+    
+
+    navigate("/login/EmployeeBoard");
+    
+    // const userType = formData.email === "admin@techzmatrix.com" ? "admin" : "employee";
+
+    
+    // if (userType === "admin") {
+    //   navigate("/dashboard/admin"); // admin dashboard
+    // } else {
+    //   navigate("/dashboard/employee"); // employee dashboard
+    // }
   };
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-      
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -97,7 +107,6 @@ const EmployeeLogin = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        
         <div className="flex items-center justify-between mb-10">
           <img src={techzmatrix} alt="Company Logo" className="w-40" />
 
@@ -109,9 +118,7 @@ const EmployeeLogin = () => {
           </Link>
         </div>
 
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
-          
           <div className="relative overflow-hidden rounded-xl h-80 md:h-auto">
             <AnimatePresence mode="wait">
               <motion.img
@@ -127,7 +134,6 @@ const EmployeeLogin = () => {
             </AnimatePresence>
           </div>
 
-          
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -135,16 +141,9 @@ const EmployeeLogin = () => {
             className="flex flex-col justify-center text-white"
           >
             <h2 className="text-3xl font-bold mb-2">Hello 👋</h2>
-            <p className="text-white/70 mb-6">
-              Login to your account
-            </p>
+            <p className="text-white/70 mb-6">Login to your account</p>
 
-            <form
-              className="space-y-4"
-              onSubmit={handleSubmit}
-              noValidate
-            >
-              
+            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
               <div>
                 <input
                   type="email"
@@ -155,13 +154,10 @@ const EmployeeLogin = () => {
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.email}
-                  </p>
+                  <p className="mt-1 text-sm text-red-400">{errors.email}</p>
                 )}
               </div>
 
-             
               <div>
                 <input
                   type="password"
@@ -172,20 +168,18 @@ const EmployeeLogin = () => {
                   className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white outline-none focus:border-white"
                 />
                 {errors.password && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.password}
-                  </p>
+                  <p className="mt-1 text-sm text-red-400">{errors.password}</p>
                 )}
               </div>
 
               <p className="text-sm text-white/70">
                 Don’t remember password?{" "}
-                <Link
-                  to="/Login/ForgotPassword"
-                  className="text-blue-400 hover:underline"
+                <span
+                  className="text-blue-400 hover:underline cursor-pointer"
+                  onClick={() => navigate("/login/ForgotPassword")}
                 >
                   Reset
-                </Link>
+                </span>
               </p>
 
               <button
@@ -198,12 +192,12 @@ const EmployeeLogin = () => {
 
             <p className="text-sm text-white/70 mt-4">
               Don’t have an account?{" "}
-              <Link
-                to="/Login/EmployeeSignup"
-                className="text-blue-400 hover:underline"
+              <span
+                className="text-blue-400 hover:underline cursor-pointer"
+                onClick={() => navigate("/login/EmployeeSignup")}
               >
                 Signup
-              </Link>
+              </span>
             </p>
           </motion.div>
         </div>

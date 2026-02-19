@@ -5,7 +5,6 @@ import { ArrowRight } from "lucide-react";
 
 import hero from "../../../assets/images/hero-tech.png";
 
-
 const slides = [
   {
     id: "a",
@@ -27,26 +26,28 @@ const slides = [
   },
 ];
 
-const HeroSection = () => {
+const HomeSection = () => {
   const [active, setActive] = useState(0);
-  const [openVideo, setOpenVideo] = useState(false);
+
+  // autoplay video on page load (muted – browser rule)
+  const playVideo = true;
 
   useEffect(() => {
-    const id = setInterval(
-      () => setActive((p) => (p + 1) % slides.length),
-      5200
-    );
-    return () => clearInterval(id);
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, 5200);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="relative w-full overflow-hidden">
-      
+      {/* Background */}
       <div className="absolute inset-0">
         <img
           src={hero}
           alt="Hero background"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-full object-cover"
         />
         <div
           className="absolute inset-0"
@@ -55,12 +56,11 @@ const HeroSection = () => {
               "radial-gradient(1200px 700px at 18% 20%, rgba(229,57,53,.22), rgba(11,30,58,0) 60%), radial-gradient(1000px 600px at 86% 10%, rgba(102,204,255,.18), rgba(11,30,58,0) 55%), linear-gradient(180deg, rgba(11,30,58,.68), rgba(11,30,58,.92))",
           }}
         />
-       
       </div>
 
-     
-      <div className="relative z-10 flex flex-col md:flex-row gap-20 py-20 px-6 md:px-16">
-      
+      {/* Content */}
+      <div className="relative z-10 flex flex-col lg:flex-row gap-20 py-20 px-6 md:px-16">
+        {/* Left content */}
         <div className="basis-1/2 flex flex-col justify-center max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.h1
@@ -88,66 +88,38 @@ const HeroSection = () => {
             </motion.p>
           </AnimatePresence>
 
-          <div className="mt-10 flex gap-4">
+          <div className="mt-10">
             <Link
               to="/contact"
-              className="px-6 py-3 rounded-xl bg-white/20 text-white flex items-center gap-2 hover:bg-white/10 transition"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/20 text-white hover:bg-white/10 transition"
             >
               Start Your Project <ArrowRight />
             </Link>
           </div>
         </div>
 
-        
+        {/* Right video card */}
         <div className="basis-1/2 flex items-center justify-center">
           <motion.div
-            onClick={() => setOpenVideo(true)}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="w-full max-w-xl aspect-video cursor-pointer rounded-2xl border border-white/20 bg-black/60 backdrop-blur-xl flex items-center justify-center shadow-2xl"
+            className="w-full max-w-xl aspect-video rounded-2xl border border-white/20 bg-black/60 backdrop-blur-xl shadow-2xl overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            <span className="text-white text-lg font-semibold">
-              ▶ Play Overview
-            </span>
-          </motion.div>
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {openVideo && (
-          <motion.div
-            className="fixed inset-0 z-999 bg-black/80 backdrop-blur-md flex items-center justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="relative w-[90%] max-w-5xl aspect-video rounded-2xl overflow-hidden bg-black"
-              initial={{ scale: 0.85, y: 40 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.85, y: 40 }}
-              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <button
-                onClick={() => setOpenVideo(false)}
-                className="absolute top-4 right-4 z-10 text-white bg-black/60 rounded-full px-3 py-1"
-              >
-                ✕
-              </button>
-
+            {playVideo && (
               <iframe
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/Hgg7M3kSqyE?autoplay=1"
+                src="https://www.youtube.com/embed/Hgg7M3kSqyE?autoplay=1&mute=1&rel=0"
                 allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
                 title="Hero Video"
               />
-            </motion.div>
+            )}
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default HomeSection;

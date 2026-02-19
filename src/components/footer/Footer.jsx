@@ -56,7 +56,7 @@ const Footer = () => {
 
         <motion.div variants={fadeUp}>
           <Link to="/" className="shrink-0">
-            <img src={Techzmatrix} className="w-46 object-contain pb-3" />
+            <img src={Techzmatrix} className="w-49 object-contain pb-3" />
           </Link>
           <p className="text-sm text-white/70 leading-relaxed">
             Techzmatrix delivers scalable, secure, and future-ready
@@ -89,20 +89,24 @@ const Footer = () => {
         <motion.div variants={fadeUp}>
           <h4 className="text-base font-semibold mb-3">Contact</h4>
           <ul className="space-y-3 text-sm text-white/70">
-            <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
-              <Mail size={16} /><a
-                href="mailto:mail@techzmatrix.in"
-
-              >
-                mail@techzmatrix.in
-              </a>
-            </li>
+            
             <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
               <Phone size={16} /> <a href="tel:+919633764228">+91 96337 64228</a>
 
             </li>
             <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
               <Phone size={16} /> <a href="tel:9995602526">+91 99956 02526</a>
+            </li>
+             <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
+              <PiWhatsappLogoDuotone size={22} /><a href="https://wa.me/+919995602526">+91 99956 02526</a>
+            </li>
+            <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
+              <Mail size={20} /><a
+                href="mailto:mail@techzmatrix.in"
+
+              >
+                mail@techzmatrix.in
+              </a>
             </li>
             <li className="flex items-start gap-2  cursor-pointer hover:text-cyan-400/80">
               <MapPin size={26} />
@@ -117,9 +121,7 @@ const Footer = () => {
                 Thiruvananthapuram, Kerala 695583
               </a>
             </li>
-            <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
-              <PiWhatsappLogoDuotone size={26} /><a href="https://wa.me/9995602526">+91 99956 02526</a>
-            </li>
+           
           </ul>
         </motion.div>
       </motion.div>

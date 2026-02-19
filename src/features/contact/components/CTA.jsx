@@ -14,22 +14,9 @@ const CTA = () => {
                 className="absolute inset-0 z-0"
                 style={{
                     backgroundImage: `
-         linear-gradient(
-    to right,
-    rgba(355, 255, 255, 0.035) 1px,
-    transparent 1px
-  ),
-  linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.055) 1px,
-    transparent 1px
-  ),
-  radial-gradient(
-    circle 800px at 0% 200px,
-    rgba(95, 153, 196, 0.35),
-    transparent 0%
-  )
-      `,
+         linear-gradient( to right,rgba(355, 255, 255, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom,rgba(255, 255, 255, 0.055) 1px,transparent 1px),
+                radial-gradient(circle 800px at 0% 200px,rgba(95, 153, 196, 0.35),transparent 0%)`,
                     backgroundSize: "96px 64px, 96px 64px, 100% 100%",
                 }}
             />

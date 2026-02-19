@@ -106,8 +106,8 @@ const WhyChooseUs = () => {
                                 <h1 className="text-3xl py-2 text-blue-400">10+</h1>
                             </div >
                             <div className="rounded-2xl w-1/2 text-white glow-edge  border border-white/10 bg-white/5 p-4">
-                                <h2>Clients served</h2>
-                                <h1 className="text-3xl py-2 text-blue-400">24+</h1>
+                                <h2>Unknown</h2>
+                                <h1 className="text-3xl py-2 text-blue-400">1/0</h1>
 
                             </div>
                         </div>
@@ -122,7 +122,7 @@ const WhyChooseUs = () => {
                     </motion.div>
                     <motion.div
                         variants={fadeUp}
-                        className="grid  grid-cols-2 gap-3 basis-1/2 pt-6 md:p-6">
+                        className="grid  grid-cols-2 gap-4 basis-1/2 pt-6 md:p-6">
                         {
                             capabilities.map((item) => (
                                 <motion.div key={item.id}
@@ -131,7 +131,7 @@ const WhyChooseUs = () => {
                                     className="rounded-2xl text-white tm-glass tm-noise  shadow-2xs shadow-blue-300  border border-white/10 bg-white/5 p-3 md:p-6">
 
                                     <item.icon size={30} className="my-3" />
-                                    <h1 className="text-blue-400">{item.title}</h1>
+                                    <h1 className="text-blue-400 text-lg">{item.title}</h1>
                                     <h2 className="text-white/70 text-sm py-2">{item.subtitle}</h2>
                                 </motion.div>
                             ))

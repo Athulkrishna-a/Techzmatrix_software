@@ -41,7 +41,7 @@ const AppDevelop = () => {
     },
   ];
   useEffect(() => {
-    document.title = 'App Development | Techzmatrix Software Technologies'
+    document.title = 'App Development '
   }, [])
 
   return (
@@ -82,7 +82,7 @@ const AppDevelop = () => {
       <FeatureMobile />
       <ProcessSection />
       <div
-        className="px-5">
+        className="px-5 md:px-12">
         <ServiceCard
 
           title="Apps That Move. Fast."

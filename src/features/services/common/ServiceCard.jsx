@@ -16,7 +16,7 @@ const ServiceCard = ({ title, description, technologies }) => {
       transition={{ duration: 0.6 }}
       className="relative px-6 sm:px-8 md:px-10 py-6 sm:py-8 md:py-10 rounded-3xl bg-gradient-to-br from-purple-700 via-blue-600 to-indigo-600 shadow-xl hover:shadow-2xl transition-shadow duration-300 max-w-full sm:max-w-3xl md:max-w-5xl mx-auto tm-glass tm-noise overflow-hidden"
     >
-      {/* Decorative Blur Circles */}
+      
       <div className="absolute -top-10 -right-10 w-24 sm:w-32 h-24 sm:h-32 bg-purple-400 rounded-full opacity-20 blur-3xl pointer-events-none"></div>
       <div className="absolute -bottom-10 -left-10 w-24 sm:w-32 h-24 sm:h-32 bg-blue-400 rounded-full opacity-20 blur-3xl pointer-events-none"></div>
 

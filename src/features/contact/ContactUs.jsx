@@ -9,7 +9,7 @@ import {
 } from "lucide-react"
 const ContactUs = () => {
   useEffect(() => {
-    document.title = 'contact us | Techzmatrix Software Technologies'
+    document.title = 'contact us '
   }, [])
   return (
     <section className='w-full h-auto relative overflow-hidden mx-auto text-white'>
@@ -53,7 +53,7 @@ const ContactUs = () => {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex md:flex-row flex-col gap-3 pt-4'>
+          className='flex lg:flex-row flex-col gap-3 pt-4'>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ const ContactUs = () => {
 
               <div className="flex flex-col">
                 <label className="text-sm text-white/70 mb-1">
-                  Phone
+                  Phone Number
                 </label>
                 <input
                   type="number"
@@ -129,7 +129,7 @@ const ContactUs = () => {
                   className="rounded-lg bg-white/10 border border-white/10 
                    px-4 py-2 text-white placeholder-white/40
                    focus:outline-none focus:ring-2 focus:ring-blue-400/60
-                   transition"
+                   transition "
                   placeholder="+91 XXXXX XXXXX"
                 />
               </div>
@@ -183,19 +183,13 @@ const ContactUs = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className='basis-2/5 flex flex-col gap-3'>
+            className='basis-2/5 flex flex-col  gap-3'>
             <div className='basis-1/2 fixed rounded-2xl glow-edge tm-glass tm-noise shadow-2xl shadow-blue-300 border border-white/10 bg-white/5'>
               <motion.div variants={fadeUp}
                 className='px-10 py-10'>
                 <h4 className="text-2xl font-semibold mb-3 text-blue-400">Contact Info</h4>
                 <ul className="space-y-3 text-sm text-white">
-                  <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
-                    <Mail size={16} /><a
-                      href="mailto:mail@techzmatrix.in"
-                    >
-                      mail@techzmatrix.in
-                    </a>
-                  </li>
+
                   <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
                     <Phone size={16} /> <a href="tel:+919633764228">+91 96337 64228</a>
 
@@ -203,8 +197,18 @@ const ContactUs = () => {
                   <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
                     <Phone size={16} /> <a href="tel:9995602526">+91 99956 02526</a>
                   </li>
+                  <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
+                    <PiWhatsappLogoDuotone size={22} /><a href="https://wa.me/+919995602526">+91 99956 02526</a>
+                  </li>
+                  <li className="flex items-center gap-2  cursor-pointer hover:text-cyan-400/80">
+                    <Mail size={16} /><a
+                      href="mailto:mail@techzmatrix.in"
+                    >
+                      mail@techzmatrix.in
+                    </a>
+                  </li>
                   <li className="flex items-start gap-2  cursor-pointer hover:text-cyan-400/80">
-                    <MapPin size={26} />
+                    <MapPin size={22} />
                     <a
                       href="https://maps.app.goo.gl/wp6qNBH4zR5dsxNx5"
                       target="_blank"
@@ -216,9 +220,7 @@ const ContactUs = () => {
                       Thiruvananthapuram, Kerala 695583
                     </a>
                   </li>
-                  <li className="flex items-center gap-2 cursor-pointer hover:text-cyan-400/80">
-                    <PiWhatsappLogoDuotone size={26} /><a href="https://wa.me/9995602526">+91 99956 02526</a>
-                  </li>
+
 
                 </ul>
               </motion.div>

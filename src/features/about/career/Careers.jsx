@@ -27,7 +27,7 @@ const itemVariants = {
 
 const Careers = () => {
     useEffect(() => {
-        document.title = 'Careers | Techzmatrix Software Technologies'
+        document.title = 'Careers '
     }, [])
 
     const [showAll, setShowAll] = useState(false);

@@ -28,7 +28,7 @@ const HeroSection = () => {
     transparent 0%
   )
           `,
-          backgroundSize: "60px 40px",
+           backgroundSize: "96px 64px, 96px 64px, 100% 100%",
         }}
       />
 
@@ -76,7 +76,7 @@ const HeroSection = () => {
              
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
               className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"
             >
               {[
@@ -137,7 +137,7 @@ const HeroSection = () => {
               
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
               src="https://images.unsplash.com/photo-1497366216548-37526070297c"
               alt="Tech office"
               className="w-full h-90 object-cover rounded-2xl shadow-lg"
@@ -164,7 +164,7 @@ const HeroSection = () => {
            
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
             >
               <h3 className="text-3xl font-bold text-cyan-400">
                 Our Vision
@@ -180,7 +180,7 @@ const HeroSection = () => {
             
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              // viewport={{ once: true }}
               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
               alt="Vision and innovation"
               className="w-full h-70 object-cover rounded-2xl shadow-lg"

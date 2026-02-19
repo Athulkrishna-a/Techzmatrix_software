@@ -50,7 +50,7 @@ const Webdevelop = () => {
 
 
   useEffect(() => {
-    document.title = 'Web Development | Techzmatrix Software Technologies'
+    document.title = 'Web Development '
   }, [])
   return (
     <section className="relative overflow-hidden">
@@ -88,7 +88,7 @@ const Webdevelop = () => {
       />
       <FeatureGrid />
       <ProcessWeb />
-      <div className="px-5">
+      <div className="md:px-12 px-5">
         <ServiceCard
           title="Web Experiences That Perform."
           description="From concept to deployment: scalable, responsive web applications built with modern technologies."

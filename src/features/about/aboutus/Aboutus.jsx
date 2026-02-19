@@ -7,7 +7,7 @@ import { useEffect } from "react"
 const Aboutus = () => {
 
   useEffect(() => {
-     document.title = 'About Us | Techzmatrix Software Technologies'
+     document.title = 'About us '
    }, [])
    
   return (
