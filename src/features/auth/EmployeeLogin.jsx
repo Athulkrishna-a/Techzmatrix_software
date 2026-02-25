@@ -75,7 +75,7 @@ const EmployeeLogin = () => {
     console.log("Login data:", formData);
     
 
-    navigate("/login/EmployeeBoard");
+    // navigate("/login/EmployeeBoard");
     
     // const userType = formData.email === "admin@techzmatrix.com" ? "admin" : "employee";
 
