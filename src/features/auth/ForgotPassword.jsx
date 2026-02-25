@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -20,28 +23,29 @@ const ForgotPassword = () => {
       setError("Enter a valid email address");
       return;
     }
-
-    try {
+    navigate("/login/VerifyResetCode");
+   
+    // try {
      
-      const res = await fetch("http://localhost:8080/api/auth/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+    //   const res = await fetch("", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ email }),
+    //   });
 
-      if (!res.ok) {
-        throw new Error("Something went wrong");
-      }
+    //   if (!res.ok) {
+    //     throw new Error("Something went wrong");
+    //   }
 
-      setSuccess(
-        "If this email exists, a password reset link has been sent."
-      );
-      setEmail("");
-    } catch (err) {
-      setError("Unable to process request. Try again later.");
-    }
+    //   setSuccess(
+    //     "If this email exists, a password reset code has been sent."
+    //   );
+    //   setEmail("");
+    // } catch (err) {
+    //   setError("Unable to process request. Try again later.");
+    // }
   };
 
   return (
@@ -73,6 +77,7 @@ const ForgotPassword = () => {
           <input
             type="email"
             placeholder="Email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 outline-none"
@@ -87,8 +92,16 @@ const ForgotPassword = () => {
             type="submit"
             className="w-full mt-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold"
           >
-            Send Reset Link
+            Send Code
           </button>
+          <Link to="/login/EmployeeLogin">
+            <button
+              type="submit"
+              className="w-full mt-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold"
+            >
+              Cancel
+            </button>
+          </Link>
         </form>
       </motion.div>
     </section>

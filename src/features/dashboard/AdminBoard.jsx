@@ -82,7 +82,7 @@ const AdminDashboard = () => {
     setEmployees(employees.filter(emp => emp.id !== id));
   };
 
-  /* ---------------- Content ---------------- */
+ 
   const renderContent = () => {
     if (activeTab === "Overview") {
       return (

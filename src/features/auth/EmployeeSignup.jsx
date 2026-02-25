@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import api from "../../api/Axios";
 
 import techzmatrix from "../../assets/images/Techzmatrix_software.png";
 import google1 from "../../assets/images/google1.jpeg";
@@ -53,15 +54,27 @@ const EmployeeSignup = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return; 
+    if (!validateForm()) return;
 
-    console.log("Valid form data:", formData);
+    try {
+      const response = await api.post("/auth/register", formData);
 
-    
-    navigate("/login/EmployeeLogin");
+      console.log("Signup success:", response.data);
+
+      
+      navigate("/login/EmployeeLogin");
+    } catch (error) {
+      console.error("Signup failed:", error);
+
+      if (error.response) {
+        alert(error.response.data.message || "Signup failed");
+      } else {
+        alert("Server not reachable");
+      }
+    }
   };
 
   return (

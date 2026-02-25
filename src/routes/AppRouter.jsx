@@ -16,6 +16,8 @@ import Careers from "../features/about/career/Careers.jsx";
 import ForgotPassword from "../features/auth/ForgotPassword.jsx";
 import EmployeeBoard from "../features/dashboard/EmployeeBoard.jsx";
 import AdminBoard from "../features/dashboard/AdminBoard.jsx";
+import ResetPassword from "../features/auth/ResetPassword.jsx";
+import VerifyResetCode from "../features/auth/VerifyResetCode.jsx";
 
 export const AppRouter = createBrowserRouter([
     {
@@ -87,6 +89,14 @@ export const AppRouter = createBrowserRouter([
               {
                 path:"Adminboard",
                 element:<AdminBoard/>
+            },
+            {
+                path:"ResetPassword",
+                element:<ResetPassword/>
+            },
+            {
+                path:"VerifyResetCode",
+                element:<VerifyResetCode/>
             }
         ],
     }
