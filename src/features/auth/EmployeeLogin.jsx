@@ -67,25 +67,26 @@ const EmployeeLogin = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = (e) => {
+  e.preventDefault();
 
-    if (!validateForm()) return; 
+  if (!validateForm()) return;
 
-    console.log("Login data:", formData);
-    
+  const validEmail = "admin@techzmatrix.com";
+  const validPassword = "admin123";
 
-    // navigate("/login/EmployeeBoard");
-    
-    // const userType = formData.email === "admin@techzmatrix.com" ? "admin" : "employee";
+  if (
+    formData.email !== validEmail ||
+    formData.password !== validPassword
+  ) {
+    alert("Invalid user details");
+    return;
+  }
 
-    
-    // if (userType === "admin") {
-    //   navigate("/dashboard/admin"); // admin dashboard
-    // } else {
-    //   navigate("/dashboard/employee"); // employee dashboard
-    // }
-  };
+  // console.log("Login success:", formData);
+
+};
+
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
