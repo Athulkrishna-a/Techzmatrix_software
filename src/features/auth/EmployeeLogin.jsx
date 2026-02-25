@@ -11,6 +11,7 @@ import google3 from "../../assets/images/google3.jpeg";
 
 const EmployeeLogin = () => {
   const images = [google1, google2, google3];
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const [index, setIndex] = useState(0);
@@ -70,6 +71,8 @@ const EmployeeLogin = () => {
 const handleSubmit = (e) => {
   e.preventDefault();
 
+  setError(""); 
+
   if (!validateForm()) return;
 
   const validEmail = "admin@techzmatrix.com";
@@ -79,11 +82,9 @@ const handleSubmit = (e) => {
     formData.email !== validEmail ||
     formData.password !== validPassword
   ) {
-    alert("Invalid user details");
+    setError("Invalid email or password");
     return;
   }
-
-  // console.log("Login success:", formData);
 
 };
 
