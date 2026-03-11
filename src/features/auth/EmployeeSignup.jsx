@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import api from "../../api/Axios";
 
 import techzmatrix from "../../assets/images/Techzmatrix_software.png";
-import google1 from "../../assets/images/google1.jpeg";
-import google2 from "../../assets/images/google2.jpeg";
-import google3 from "../../assets/images/google3.jpeg";
+import image1 from "../../assets/images/techzmatrix_poster01.jpeg";
+import image2 from "../../assets/images/techzmatrix_poster02.jpeg";
+import image3 from "../../assets/images/techzmatrix_poster03.jpeg";
+import image4 from "../../assets/images/techzmatrix_poster04.jpeg";
 
 const EmployeeSignup = () => {
-  const images = [google1, google2, google3];
+const images = [image1, image2, image3,image4];
   const navigate = useNavigate();
 
   const [imageIndex, setImageIndex] = useState(0);
@@ -64,7 +65,7 @@ const EmployeeSignup = () => {
 
       console.log("Signup success:", response.data);
 
-      
+
       navigate("/login/EmployeeLogin");
     } catch (error) {
       console.error("Signup failed:", error);
@@ -98,7 +99,9 @@ const EmployeeSignup = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="flex items-center justify-between mb-10">
-          <img src={techzmatrix} alt="Company Logo" className="w-40" />
+          <Link to="/">
+            <img src={techzmatrix} alt="Company Logo" className="w-40" />
+          </Link>
 
           <Link
             to="/"
@@ -108,7 +111,7 @@ const EmployeeSignup = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2  tm-glass edge-glow gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
           <div className="relative overflow-hidden rounded-xl h-80 md:h-auto">
             <AnimatePresence mode="wait">
               <motion.img
@@ -178,7 +181,7 @@ const EmployeeSignup = () => {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition font-semibold"
+                className="w-full py-3 rounded-lg cursor-pointer bg-blue-600 hover:bg-blue-700 transition font-semibold"
               >
                 Sign Up
               </button>

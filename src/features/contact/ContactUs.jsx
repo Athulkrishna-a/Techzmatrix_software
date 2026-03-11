@@ -1,16 +1,118 @@
 import { motion } from 'framer-motion'
 import { fadeUp, stagger } from "../../components/ui/motion";
 import { PiWhatsappLogoDuotone } from "react-icons/pi";
-import { useEffect } from 'react'
+import { useEffect, useState } from "react"
+import CountryCodeDropdown from './components/CountryCodeDropdown';
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
   MapPin
 } from "lucide-react"
+
+
 const ContactUs = () => {
+  useEffect(() => {
+    document.title = "Contact Us"
+  }, [])
+
+  const initialFormData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    countryCode: "+91",
+    phone: "",
+    subject: "",
+    message: ""
+  };
+  const [status, setStatus] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errors, setErrors] = useState({})
+  const [formData, setFormData] = useState(initialFormData);
+
+  const nameRegex = /^[A-Za-z\s]+$/
+  const phoneRegex = /^[0-9]{6,15}$/
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+
+    if (name === "firstName" || name === "lastName") {
+      if (!/^[A-Za-z\s]*$/.test(value)) return
+    }
+
+    if (name === "phone") {
+      if (!/^[0-9]*$/.test(value)) return
+    }
+
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+
+  const validate = () => {
+    let newErrors = {}
+
+    if (!nameRegex.test(formData.firstName)) {
+      newErrors.firstName = "Only letters allowed"
+    }
+
+    if (!nameRegex.test(formData.lastName)) {
+      newErrors.lastName = "Only letters allowed"
+    }
+
+    if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Enter valid phone number"
+    }
+
+    // Missing checks:
+    if (!formData.email) newErrors.email = "Email is required"
+    if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Enter valid email"
+    if (!formData.subject) newErrors.subject = "Subject is required"
+    if (!formData.message) newErrors.message = "Message is required"
+
+    setErrors(newErrors)
+
+    return Object.keys(newErrors).length === 0
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    const templateParams = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: `${formData.countryCode} ${formData.phone}`,
+      subject: formData.subject,
+      message: formData.message
+    };
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then((result) => {
+        setStatus("Email sent successfully!");
+        setIsSuccess(true);
+        setFormData(initialFormData); // clear fields
+      })
+      .catch((error) => {
+        console.error("EmailJS Error:", error);
+        setStatus("Failed to send email. Please try again.");
+        setIsSuccess(false);
+      });
+  };
+
   useEffect(() => {
     document.title = 'contact us '
   }, [])
+
+
   return (
     <section className='w-full h-auto relative overflow-hidden mx-auto text-white'>
       <div
@@ -58,7 +160,7 @@ const ContactUs = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="basis-3/5 rounded-2xl glow-edge tm-glass tm-noise 
+            className="basis-3/5 rounded-2xl glow-edge tm-glass edge-glow tm-noise 
              shadow-2xl shadow-blue-300/20 
              border border-white/10 bg-white/5 
              p-8 space-y-6"
@@ -67,7 +169,7 @@ const ContactUs = () => {
               Contact
             </h1>
 
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
 
               <div className="flex flex-col md:flex-row gap-5">
                 <div className="flex flex-col w-full">
@@ -76,13 +178,16 @@ const ContactUs = () => {
                   </label>
                   <input
                     type="text"
-                    required
-                    className="rounded-lg bg-white/10 border border-white/10 
-                     px-4 py-2 text-white placeholder-white/40
-                     focus:outline-none focus:ring-2 focus:ring-blue-400/60
-                     transition"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                    className="rounded-lg bg-white/10 border border-white/10 px-4 py-2 text-white"
                     placeholder="First name"
                   />
+
+                  {errors.firstName && (
+                    <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>
+                  )}
                 </div>
 
                 <div className="flex flex-col w-full">
@@ -91,13 +196,16 @@ const ContactUs = () => {
                   </label>
                   <input
                     type="text"
-                    required
-                    className="rounded-lg bg-white/10 border border-white/10 
-                     px-4 py-2 text-white placeholder-white/40
-                     focus:outline-none focus:ring-2 focus:ring-blue-400/60
-                     transition"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className="rounded-lg bg-white/10 border border-white/10 px-4 py-2 text-white"
                     placeholder="Last name"
                   />
+
+                  {errors.lastName && (
+                    <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>
+                  )}
                 </div>
               </div>
 
@@ -108,6 +216,9 @@ const ContactUs = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                   className="rounded-lg bg-white/10 border border-white/10 
                    px-4 py-2 text-white placeholder-white/40
@@ -122,25 +233,38 @@ const ContactUs = () => {
                 <label className="text-sm text-white/70 mb-1">
                   Phone Number
                 </label>
-                <input
-                  type="number"
-                  required
-                  name='number'
-                  className="rounded-lg bg-white/10 border border-white/10 
-                   px-4 py-2 text-white placeholder-white/40
-                   focus:outline-none focus:ring-2 focus:ring-blue-400/60
-                   transition "
-                  placeholder="+91 XXXXX XXXXX"
-                />
+
+                <div className="flex gap-2 items-center">
+                  <CountryCodeDropdown
+                    value={formData.countryCode}
+                    onChange={(code) =>
+                      setFormData({ ...formData, countryCode: code })
+                    }
+                  />
+
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Phone number"
+                    className="flex-1 rounded-lg bg-white/10 border border-white/10 px-4 py-2 text-white"
+                  />
+                </div>
+
+                {errors.phone && (
+                  <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
+                )}
               </div>
-
-
               <div className="flex flex-col">
                 <label className="text-sm text-white/70 mb-1">
                   Subject
                 </label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                   required
                   className="rounded-lg bg-white/10 border border-white/10 
                    px-4 py-2 text-white placeholder-white/40
@@ -158,6 +282,9 @@ const ContactUs = () => {
                 <textarea
                   rows={4}
                   type="text"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                   className="rounded-lg bg-white/10 border border-white/10 
                    px-4 py-2 text-white placeholder-white/40
@@ -178,6 +305,17 @@ const ContactUs = () => {
                 Send Message
               </button>
             </form>
+            {status && (
+              <p
+                style={{
+                  color: isSuccess ? "green" : "red",
+                  marginTop: "10px",
+                  fontWeight: "600"
+                }}
+              >
+                {status}
+              </p>
+            )}
           </motion.div>
 
           <motion.div

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 import techzmatrix from "../../assets/images/Techzmatrix_software.png";
-import google1 from "../../assets/images/google1.jpeg";
-import google2 from "../../assets/images/google2.jpeg";
-import google3 from "../../assets/images/google3.jpeg";
+import image1 from "../../assets/images/techzmatrix_poster01.jpeg";
+import image2 from "../../assets/images/techzmatrix_poster02.jpeg";
+import image3 from "../../assets/images/techzmatrix_poster03.jpeg";
+import image4 from "../../assets/images/techzmatrix_poster04.jpeg";
 
 const EmployeeLogin = () => {
-  const images = [google1, google2, google3];
+  const images = [image1, image2, image3,image4];
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -68,25 +69,25 @@ const EmployeeLogin = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  setError(""); 
+    setError("");
 
-  if (!validateForm()) return;
+    if (!validateForm()) return;
 
-  const validEmail = "admin@techzmatrix.com";
-  const validPassword = "admin123";
+    const validEmail = "admin@techzmatrix.com";
+    const validPassword = "admin123";
 
-  if (
-    formData.email !== validEmail ||
-    formData.password !== validPassword
-  ) {
-    setError("Invalid email or password");
-    return;
-  }
+    if (
+      formData.email !== validEmail ||
+      formData.password !== validPassword
+    ) {
+      setError("Invalid email or password");
+      return;
+    }
 
-};
+  };
 
 
   return (
@@ -110,17 +111,19 @@ const handleSubmit = (e) => {
         transition={{ duration: 0.8 }}
       >
         <div className="flex items-center justify-between mb-10">
-          <img src={techzmatrix} alt="Company Logo" className="w-40" />
+          <Link to="/">
+           <img src={techzmatrix} alt="Company Logo" className="w-40" />
+          </Link>
 
           <Link
             to="/"
-            className="px-5 py-2 rounded-lg bg-white/10 text-white hover:bg-white/20 transition"
+            className="px-5 py-2 rounded-lg tm-glass edge-glow bg-white/10 text-white hover:bg-white/20 transition"
           >
             Go Home
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-xl rounded-2xl p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/4  tm-glass edge-glow backdrop-blur-xl rounded-2xl p-8">
           <div className="relative overflow-hidden rounded-xl h-80 md:h-auto">
             <AnimatePresence mode="wait">
               <motion.img
@@ -172,6 +175,11 @@ const handleSubmit = (e) => {
                 {errors.password && (
                   <p className="mt-1 text-sm text-red-400">{errors.password}</p>
                 )}
+                {error && (
+                  <p style={{ color: "red", marginTop: "8px" }}>
+                    "Invalid email or password"
+                  </p>
+                )}
               </div>
 
               <p className="text-sm text-white/70">
@@ -186,7 +194,7 @@ const handleSubmit = (e) => {
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition font-semibold"
+                className="w-full py-3 rounded-lg cursor-pointer bg-blue-600 hover:bg-blue-700 transition font-semibold"
               >
                 Login
               </button>
